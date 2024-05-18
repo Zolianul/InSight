@@ -3,6 +3,7 @@ package com.example.insight;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisteringActivity extends AppCompatActivity {
@@ -29,6 +33,7 @@ public class RegisteringActivity extends AppCompatActivity {
     private RadioGroup radioGroupRegisterGender;
 
     private RadioButton radioButtonRegisterGenderSelected;
+    private static final String TAG="RegisteringActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +130,7 @@ public class RegisteringActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(textEmail,textPwd).addOnCompleteListener(RegisteringActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            public void onComplete(Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(RegisteringActivity.this,"User registered succesfully",Toast.LENGTH_LONG).show();
                     FirebaseUser firebaseUser = auth.getCurrentUser();
@@ -137,7 +142,24 @@ public class RegisteringActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();*/
-                }
+                }else{
+                    try{
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        editTestRegisterPwd.setError("Your password is too weak!");
+                        editTestRegisterPwd.requestFocus();
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        editTestRegisterPwd.setError("Your email is invalid or already in use.");
+                        editTestRegisterPwd.requestFocus();
+                    }catch(FirebaseAuthUserCollisionException e){
+                        editTestRegisterPwd.setError("User is already registered with this email.");
+                        editTestRegisterPwd.requestFocus();
+                    }catch(Exception e) {
+                        Log.e(TAG, e.getMessage());
+                        Toast.makeText(RegisteringActivity.this, e.getMessage(),Toast.LENGTH_LONG).show();
+
+                    }
+                }progressBar.setVisibility(View.GONE);
             }
         });
     }
