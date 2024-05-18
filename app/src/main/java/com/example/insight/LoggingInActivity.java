@@ -7,14 +7,14 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginScreen extends AppCompatActivity {
+public class LoggingInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView((R.layout.login_screen));
+        setContentView((R.layout.activity_logging_in));
 
 
         //set the title
-        getSupportActionBar().setTitle("FirebaseApp");
+        //getSupportActionBar().setTitle("FirebaseApp");
 
         /*//open long in activity
         Button buttonLogin=findViewById((R.id.button_login));
@@ -32,7 +32,7 @@ public class LoginScreen extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginScreen.this,RegisterActivity.class);
+                Intent intent=new Intent(LoggingInActivity.this,RegisteringActivity.class);
                 startActivity(intent);
             }
         });
