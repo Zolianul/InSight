@@ -32,9 +32,10 @@ public class RegisteringActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registering);
 
         //getSupportActionBar().setTitle("Register");
-        //Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
+        Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
         progressBar = findViewById(R.id.progress_bar);
         editTestRegisterFullName= findViewById(R.id.editText_register_full_name);
         editTestRegisterEmail=findViewById(R.id.editText_register_email);
