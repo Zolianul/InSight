@@ -107,7 +107,10 @@ public class LogInActivity extends AppCompatActivity {
 
                     if(firebaseUser.isEmailVerified()){
                         Toast.makeText(LogInActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
-
+                        //oppen user profile
+                        //Start the user page activity
+                        startActivity(new Intent(LogInActivity.this,UserPageActivity.class));
+                        finish();
                     }else{
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut();
@@ -160,5 +163,20 @@ public class LogInActivity extends AppCompatActivity {
 
         //show the alert dialog
     alertDialog.show();
+    }
+//check if user is logged in. if yes, take it to user page
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if( authProfile.getCurrentUser() != null){
+            Toast.makeText(LogInActivity.this, "Already logged in",Toast.LENGTH_SHORT).show();
+
+            //Start the user page activity
+            startActivity(new Intent(LogInActivity.this,UserPageActivity.class));
+            finish();
+        }else{
+            Toast.makeText(LogInActivity.this, "You can now log in",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
