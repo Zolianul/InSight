@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void openLoginTest() {
-        Intent intent = new Intent(this, LoggingInActivity.class);
+        Intent intent = new Intent(this, LoggingInActivityMainScreen.class);
         startActivity(intent);
     }
 }
