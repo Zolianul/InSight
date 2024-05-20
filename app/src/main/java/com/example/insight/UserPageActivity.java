@@ -1,9 +1,14 @@
 package com.example.insight;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -43,11 +48,42 @@ public class UserPageActivity extends AppCompatActivity {
         if(firebaseUser == null){
             Toast.makeText(UserPageActivity.this, "Something went wrong! User not available",Toast.LENGTH_LONG).show();
         }else{
+            checkEmailVerified(firebaseUser);
             progressBar.setVisibility(View.VISIBLE);
             showUserProfile(firebaseUser);
         }
 
 
+    }
+
+    private void checkEmailVerified(FirebaseUser firebaseUser) {
+        if(!firebaseUser.isEmailVerified()){
+            System.out.println("not verified");
+            showAlertDialog();
+        }
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(UserPageActivity.this);
+        builder.setTitle("Email not verified");
+        builder.setMessage("Please verify your email now.You can't login without email verification.");
+        //open email if user agrees to continue
+        builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+
+            }
+        });
+//create the alert dialog
+        AlertDialog alertDialog = builder.create();
+
+        //show the alert dialog
+        alertDialog.show();
     }
 
     private void showUserProfile(FirebaseUser  firebaseUser) {
@@ -86,5 +122,48 @@ public class UserPageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    //side menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.common_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+    int id =item.getItemId();
+    if(id==R.id.menu_refresh){
+        startActivity(getIntent());
+        finish();
+        //overridePendingTransition(0,0);
+    } else if( id==R.id.menu_updateProfile){
+        /*Intent intent = new Intent(UserPageActivity.this, UpdateProfileActivity.class);
+        startActivity(intent);*/
+    }else if( id==R.id.menu_updateEmail){
+        /*Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
+        startActivity(intent);*/
+    }else if( id==R.id.menu_settings){
+        Toast.makeText(UserPageActivity.this, "menu settings",Toast.LENGTH_LONG).show();
+    }else if( id==R.id.menu_changePwd){
+        /*Intent intent = new Intent(UserPageActivity.this, ChangePassworgActivity.class);
+        startActivity(intent);*/
+    }else if( id==R.id.menu_deleteAcc){
+       /* Intent intent = new Intent(UserPageActivity.this, DeleteAccountActivity.class);
+        startActivity(intent);*/
+    }else if( id==R.id.menu_Logout){
+        authProfile.signOut();
+        Toast.makeText(UserPageActivity.this, "Logged out",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(UserPageActivity.this, LoggingInActivityMainScreen.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+
+    }else{
+        Toast.makeText(UserPageActivity.this, "Something went wrong",Toast.LENGTH_LONG).show();
+    }
+        return super.onOptionsItemSelected(item);
     }
 }
