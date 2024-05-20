@@ -127,7 +127,7 @@ public class UserPageActivity extends AppCompatActivity {
 
     //side menu
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu( Menu menu){
         getMenuInflater().inflate(R.menu.common_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
