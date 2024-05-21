@@ -10,7 +10,7 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose file to upload" />
+        android:text="Choose file to uploadToFirebase" />
 
     <Button
         android:id="@+id/button_go_to_stream"

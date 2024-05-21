@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class UserPageActivity extends AppCompatActivity {
 
@@ -42,6 +44,16 @@ public class UserPageActivity extends AppCompatActivity {
         textViewGender=findViewById(R.id.textView_show_gender);
         textViewMobile=findViewById(R.id.textView_show_mobile);
         progressBar=findViewById(R.id.progress_bar);
+
+        imageView=findViewById(R.id.imageView_profile_dp);
+        imageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+                    public void onClick(View v){
+                Intent intent = new Intent(UserPageActivity.this,UploadProfilePicActivity.class);
+                startActivity(intent);
+            }
+
+        });
 
         authProfile= FirebaseAuth.getInstance();
         FirebaseUser  firebaseUser= authProfile.getCurrentUser();
@@ -109,8 +121,10 @@ public class UserPageActivity extends AppCompatActivity {
                     textViewDoB.setText(dob);
                     textViewGender.setText(gender);
                     textViewMobile.setText(mobile);
+                    Uri uri=firebaseUser.getPhotoUrl();
+                    Picasso.with(UserPageActivity.this).load(uri).into(imageView);
                 } else {
-                    System.out.println("EROARE");
+                    Toast.makeText(UserPageActivity.this, "Something went wrong when fetching from the db!",Toast.LENGTH_LONG).show();
                 }
                 progressBar.setVisibility(View.GONE);
             }
