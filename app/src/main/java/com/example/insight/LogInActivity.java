@@ -32,7 +32,7 @@ public class LogInActivity extends AppCompatActivity {
         private EditText editTextEmail, editTextPwd;
         private ProgressBar progressBar;
         private FirebaseAuth authProfile;
-        private static final String TAG="LogInActivity";
+        private final static String TAG="LogInActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,15 @@ public class LogInActivity extends AppCompatActivity {
 
 
         authProfile=FirebaseAuth.getInstance();
+
+        Button buttonForgotPwd = findViewById(R.id.button_forgot_pwd);
+        buttonForgotPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LogInActivity.this,"You can now reset your password!",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(LogInActivity.this,ForgotPasswordActivity.class));
+            }
+        });
         //hide password
         ImageView imageviewShowHidePwd = findViewById(R.id.imageView_show_hide_pwd);
         imageviewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);

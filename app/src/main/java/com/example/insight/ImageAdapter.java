@@ -19,12 +19,12 @@ import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
     private Context mContext;
-    private List<Upload> mUploads;
+    private List<UploadToFirebase> mUploadToFirebases;
     private OnItemClickListener mListner;
 
-    public ImageAdapter(Context context, List<Upload> uploads) {
+    public ImageAdapter(Context context, List<UploadToFirebase> uploadToFirebases) {
         mContext = context;
-        mUploads = uploads;
+        mUploadToFirebases = uploadToFirebases;
     }
 
     @Override
@@ -35,10 +35,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        Upload uploadCurrent= mUploads.get(position);
-        holder.textViewName.setText(uploadCurrent.getName());
+        UploadToFirebase uploadToFirebaseCurrent = mUploadToFirebases.get(position);
+        holder.textViewName.setText(uploadToFirebaseCurrent.getName());
         Picasso.with(mContext)
-                .load(uploadCurrent.getImageUrl())
+                .load(uploadToFirebaseCurrent.getImageUrl())
                 .fit()
                 .centerCrop()
                 .into(holder.imageView);
@@ -47,7 +47,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public int getItemCount() {
-        return mUploads.size();
+        return mUploadToFirebases.size();
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,

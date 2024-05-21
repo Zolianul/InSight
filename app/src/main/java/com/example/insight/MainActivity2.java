@@ -152,10 +152,10 @@ public class MainActivity2 extends AppCompatActivity {
                             Uri downloadUrl = urlTask.getResult();
 
                             //Log.d(TAG, "onSuccess: firebase download url: " + downloadUrl.toString()); //use if testing...don't need this line.
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),downloadUrl.toString());
+                            UploadToFirebase uploadToFirebase = new UploadToFirebase(mEditTextFileName.getText().toString().trim(),downloadUrl.toString());
 
                             String uploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadId).setValue(upload);
+                            mDatabaseRef.child(uploadId).setValue(uploadToFirebase);
 
                             /*
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),

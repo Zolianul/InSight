@@ -28,7 +28,7 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
     private ValueEventListener mDBListner;
-    private List<Upload> mUploads;
+    private List<UploadToFirebase> mUploadToFirebases;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,9 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
 
         mProgressCircle=findViewById(R.id.progress_circle);
 
-        mUploads = new ArrayList<>();
+        mUploadToFirebases = new ArrayList<>();
 
-        mAdapter = new ImageAdapter(MainActivity3.this, mUploads);
+        mAdapter = new ImageAdapter(MainActivity3.this, mUploadToFirebases);
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -55,12 +55,12 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
         mDBListner=mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mUploads.clear();
+                mUploadToFirebases.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Upload upload = postSnapshot.getValue(Upload.class);
-                    upload.setKey(postSnapshot.getKey());
-                    mUploads.add(upload);
+                    UploadToFirebase uploadToFirebase = postSnapshot.getValue(UploadToFirebase.class);
+                    uploadToFirebase.setKey(postSnapshot.getKey());
+                    mUploadToFirebases.add(uploadToFirebase);
                 }
 
                 mAdapter.notifyDataSetChanged();
@@ -90,7 +90,7 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
 
     @Override
     public void onDeleteClick(int position) {
-        Upload selectedItem = mUploads.get(position);
+        UploadToFirebase selectedItem = mUploadToFirebases.get(position);
         String selectedKey= selectedItem.getKey();
 
         StorageReference imageRef= mStorage.getReferenceFromUrl(selectedItem.getImageUrl());

@@ -1,16 +1,16 @@
 package com.example.insight;
-public class Upload {
+public class UploadToFirebase {
     private String mName;
     private String mImageUrl;
 
     private String mKey;
 
 
-    public Upload() {
+    public UploadToFirebase() {
         //empty constructor needed
     }
 
-    public Upload(String name, String imageUrl) {
+    public UploadToFirebase(String name, String imageUrl) {
         if (name.trim().equals("")) {
             name = "No Name";
         }
