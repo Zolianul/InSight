@@ -151,8 +151,9 @@ public class UploadProfilePicActivity extends AppCompatActivity {
             finish();
             //overridePendingTransition(0,0);
         } else if( id==R.id.menu_updateProfile){
-        /*Intent intent = new Intent(UploadProfilePicActivity.this, UpdateProfileActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UploadProfilePicActivity.this, UpdateProfileActivity.class);
+        startActivity(intent);
+        finish();
         }else if( id==R.id.menu_updateEmail){
         /*Intent intent = new Intent(UploadProfilePicActivity.this, UpdateEmailActivity.class);
         startActivity(intent);*/

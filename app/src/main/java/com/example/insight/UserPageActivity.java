@@ -154,8 +154,9 @@ public class UserPageActivity extends AppCompatActivity {
         finish();
         //overridePendingTransition(0,0);
     } else if( id==R.id.menu_updateProfile){
-        /*Intent intent = new Intent(UserPageActivity.this, UpdateProfileActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UserPageActivity.this, UpdateProfileActivity.class);
+        startActivity(intent);
+        finish();
     }else if( id==R.id.menu_updateEmail){
         /*Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
         startActivity(intent);*/
