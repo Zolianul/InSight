@@ -71,7 +71,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
         });
 
-                /*Button buttonupdateEmail= findViewById(R.id.button_update_email);
+        Button buttonupdateEmail= findViewById(R.id.button_update_email);
                 buttonupdateEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +79,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
 
 
 

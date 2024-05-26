@@ -158,8 +158,9 @@ public class UserPageActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }else if( id==R.id.menu_updateEmail){
-        /*Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
+        startActivity(intent);
+        finish();
     }else if( id==R.id.menu_settings){
         Toast.makeText(UserPageActivity.this, "menu settings",Toast.LENGTH_LONG).show();
     }else if( id==R.id.menu_changePwd){
