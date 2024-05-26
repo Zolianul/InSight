@@ -163,7 +163,7 @@ public class LogInActivity extends AppCompatActivity {
                 intent.addCategory(Intent.CATEGORY_APP_EMAIL);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-
+                finish();
 
             }
         });

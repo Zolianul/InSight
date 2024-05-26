@@ -60,6 +60,9 @@ public class UpdateEmailActivity extends AppCompatActivity {
 
         if (firebaseUser.equals("")){
             Toast.makeText(UpdateEmailActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
+            startActivity(intent);
+            finish();
         }else {
             reAuthenticate(firebaseUser);
         }
@@ -144,12 +147,28 @@ public class UpdateEmailActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isComplete()){
                     // verify new email
-                    firebaseUser.sendEmailVerification();
+                    firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> verifytask) {
+                            if (verifytask.isComplete()){
+                                String email = firebaseUser.getEmail();
+                               // Toast.makeText(UpdateEmailActivity.this,"Successfully updated email",Toast.LENGTH_LONG).show();
+                                Toast.makeText(UpdateEmailActivity.this,email,Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                try{
+                                    throw task.getException();
+                                }catch (Exception e){
+                                    Toast.makeText(UpdateEmailActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                                    String message= e.getMessage();
+                                    textViewAuthenticated.setText(message);}
+                            }
+                        }
+                    });
 
-                    Toast.makeText(UpdateEmailActivity.this,"Email has been updated.Please verify your email now.",Toast.LENGTH_LONG).show();
-                     Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
-               startActivity(intent);
-               finish();
 
                 }else{
                     try{
@@ -190,8 +209,9 @@ public class UpdateEmailActivity extends AppCompatActivity {
         }else if( id==R.id.menu_settings){
             Toast.makeText(UpdateEmailActivity.this, "menu settings",Toast.LENGTH_LONG).show();
         }else if( id==R.id.menu_changePwd){
-        /*Intent intent = new Intent(UpdateEmailActivity.this, ChangePassworgActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UpdateEmailActivity.this, ChangePassworgActivity.class);
+        startActivity(intent);
+        finish();
         }else if( id==R.id.menu_deleteAcc){
        /* Intent intent = new Intent(UpdateEmailActivity.this, DeleteAccountActivity.class);
         startActivity(intent);*/

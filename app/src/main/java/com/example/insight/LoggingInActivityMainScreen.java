@@ -22,7 +22,7 @@ public class LoggingInActivityMainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LoggingInActivityMainScreen.this,LogInActivity.class);
-                startActivity(intent);
+                startActivity(intent);finish();
             }
         });
 
@@ -33,7 +33,7 @@ public class LoggingInActivityMainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LoggingInActivityMainScreen.this,RegisteringActivity.class);
-                startActivity(intent);
+                startActivity(intent);finish();
             }
         });
 

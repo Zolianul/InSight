@@ -161,8 +161,8 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         }else if( id==R.id.menu_settings){
             Toast.makeText(UploadProfilePicActivity.this, "menu settings",Toast.LENGTH_LONG).show();
         }else if( id==R.id.menu_changePwd){
-        /*Intent intent = new Intent(UploadProfilePicActivity.this, ChangePassworgActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UploadProfilePicActivity.this, ChangePassworgActivity.class);
+        startActivity(intent);finish();
         }else if( id==R.id.menu_deleteAcc){
        /* Intent intent = new Intent(UploadProfilePicActivity.this, DeleteAccountActivity.class);
         startActivity(intent);*/

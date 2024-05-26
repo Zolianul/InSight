@@ -254,13 +254,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_updateEmail){
-        /*Intent intent = new Intent(UpdateProfileActivity.this, UpdateEmailActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UpdateProfileActivity.this, UpdateEmailActivity.class);
+        startActivity(intent);finish();
         }else if( id==R.id.menu_settings){
             Toast.makeText(UpdateProfileActivity.this, "menu settings",Toast.LENGTH_LONG).show();
         }else if( id==R.id.menu_changePwd){
-        /*Intent intent = new Intent(UpdateProfileActivity.this, ChangePassworgActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UpdateProfileActivity.this, ChangePassworgActivity.class);
+        startActivity(intent);
         }else if( id==R.id.menu_deleteAcc){
        /* Intent intent = new Intent(UpdateProfileActivity.this, DeleteAccountActivity.class);
         startActivity(intent);*/
