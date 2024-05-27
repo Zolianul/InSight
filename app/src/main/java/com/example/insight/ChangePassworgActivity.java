@@ -207,8 +207,8 @@ public class ChangePassworgActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_deleteAcc){
-       /* Intent intent = new Intent(UpdateEmailActivity.this, DeleteAccountActivity.class);
-        startActivity(intent);*/
+       Intent intent = new Intent(ChangePassworgActivity.this, DeleteAccountActivity.class);
+        startActivity(intent);finish();
         }else if( id==R.id.menu_Logout){
             authProfile.signOut();
             Toast.makeText(ChangePassworgActivity.this, "Logged out",Toast.LENGTH_LONG).show();

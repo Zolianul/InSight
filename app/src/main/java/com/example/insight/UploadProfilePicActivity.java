@@ -78,7 +78,7 @@ public class UploadProfilePicActivity extends AppCompatActivity {
 
     private void UploadPic() {
         if(uriImage!=null){
-            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"."+getFileExtension(uriImage));
+            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"/displaypic."+getFileExtension(uriImage));
         //ulpoad to storage
 
             fileReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -164,8 +164,8 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         Intent intent = new Intent(UploadProfilePicActivity.this, ChangePassworgActivity.class);
         startActivity(intent);finish();
         }else if( id==R.id.menu_deleteAcc){
-       /* Intent intent = new Intent(UploadProfilePicActivity.this, DeleteAccountActivity.class);
-        startActivity(intent);*/
+       Intent intent = new Intent(UploadProfilePicActivity.this, DeleteAccountActivity.class);
+        startActivity(intent);finish();
         }else if( id==R.id.menu_Logout){
             authProfile.signOut();
             Toast.makeText(UploadProfilePicActivity.this, "Logged out",Toast.LENGTH_LONG).show();

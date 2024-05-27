@@ -153,7 +153,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
                             if (verifytask.isComplete()){
                                 String email = firebaseUser.getEmail();
                                // Toast.makeText(UpdateEmailActivity.this,"Successfully updated email",Toast.LENGTH_LONG).show();
-                                Toast.makeText(UpdateEmailActivity.this,email,Toast.LENGTH_LONG).show();
+                                Toast.makeText(UpdateEmailActivity.this,email+"sadsa"+userNewEmail,Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -181,6 +181,8 @@ public class UpdateEmailActivity extends AppCompatActivity {
                 }
                 progressBar.setVisibility(View.GONE);
             }
+
+
         });
     }
 
@@ -213,8 +215,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
         }else if( id==R.id.menu_deleteAcc){
-       /* Intent intent = new Intent(UpdateEmailActivity.this, DeleteAccountActivity.class);
-        startActivity(intent);*/
+            Intent intent = new Intent(UpdateEmailActivity.this, DeleteAccountActivity.class);
+        startActivity(intent);
+        finish();
+
         }else if( id==R.id.menu_Logout){
             authProfile.signOut();
             Toast.makeText(UpdateEmailActivity.this, "Logged out",Toast.LENGTH_LONG).show();

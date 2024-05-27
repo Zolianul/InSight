@@ -262,8 +262,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(UpdateProfileActivity.this, ChangePassworgActivity.class);
         startActivity(intent);
         }else if( id==R.id.menu_deleteAcc){
-       /* Intent intent = new Intent(UpdateProfileActivity.this, DeleteAccountActivity.class);
-        startActivity(intent);*/
+       Intent intent = new Intent(UpdateProfileActivity.this, DeleteAccountActivity.class);
+        startActivity(intent);
+        finish();
+
         }else if( id==R.id.menu_Logout){
             authProfile.signOut();
             Toast.makeText(UpdateProfileActivity.this, "Logged out",Toast.LENGTH_LONG).show();

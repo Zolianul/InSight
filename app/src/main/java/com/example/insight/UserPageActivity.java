@@ -167,8 +167,8 @@ public class UserPageActivity extends AppCompatActivity {
         Intent intent = new Intent(UserPageActivity.this, ChangePassworgActivity.class);
         startActivity(intent);finish();
     }else if( id==R.id.menu_deleteAcc){
-       /* Intent intent = new Intent(UserPageActivity.this, DeleteAccountActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(UserPageActivity.this, DeleteAccountActivity.class);
+        startActivity(intent);finish();
     }else if( id==R.id.menu_Logout){
         authProfile.signOut();
         Toast.makeText(UserPageActivity.this, "Logged out",Toast.LENGTH_LONG).show();
