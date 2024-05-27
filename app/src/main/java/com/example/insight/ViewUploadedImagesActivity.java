@@ -21,7 +21,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnItemClickListener {
+public class ViewUploadedImagesActivity extends AppCompatActivity implements ImageAdapter.OnItemClickListener {
     private RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
     private ProgressBar mProgressCircle;
@@ -33,7 +33,7 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_view_uploaded_images);
 
         mRecyclerView =findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -43,11 +43,11 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
 
         mUploadToFirebases = new ArrayList<>();
 
-        mAdapter = new ImageAdapter(MainActivity3.this, mUploadToFirebases);
+        mAdapter = new ImageAdapter(ViewUploadedImagesActivity.this, mUploadToFirebases);
 
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.setOnItemClicListener(MainActivity3.this);
+        mAdapter.setOnItemClicListener(ViewUploadedImagesActivity.this);
 
         mStorage=FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("home/raspberry_user/pi");
@@ -70,7 +70,7 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MainActivity3.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewUploadedImagesActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 mProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
@@ -98,7 +98,7 @@ public class MainActivity3 extends AppCompatActivity implements ImageAdapter.OnI
             @Override
             public void onSuccess(Void aVoid) {
                 mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(MainActivity3.this,"Item Deleted",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewUploadedImagesActivity.this,"Item Deleted",Toast.LENGTH_SHORT).show();
             }
         });
     }

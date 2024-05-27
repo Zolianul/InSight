@@ -50,14 +50,13 @@ public class RegisteringActivity extends AppCompatActivity {
 
         //getSupportActionBar().setTitle("Register");
         Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
-        progressBar = findViewById(R.id.progress_bar);
+        progressBar = findViewById(R.id.progressBar);
         editTestRegisterFullName= findViewById(R.id.editText_register_full_name);
         editTestRegisterEmail=findViewById(R.id.editText_register_email);
         editTestRegisterDoB=findViewById(R.id.editText_register_dob);
         editTestRegisterMobile=findViewById(R.id.editText_register_mobile);
         editTestRegisterPwd=findViewById(R.id.editText_register_password);
         editTestRegisterConfirmPwd=findViewById(R.id.editText_register_confirm_password);
-        progressBar=findViewById(R.id.progress_bar);
         radioGroupRegisterGender=findViewById(R.id.radio_group_register_gender);
         radioGroupRegisterGender.clearCheck();
 

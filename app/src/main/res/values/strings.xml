@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">InSight</string>
-
+    <string name="welcome_message_profile">Welcome, %1$s!</string>
+    <string name="register"><u>Register</u></string>
+    <string name="click_here_to_reset">Click here to reset</string>
+    <string name="register_btn">Register</string>
 </resources>

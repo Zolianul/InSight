@@ -7,12 +7,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeScreenActivity extends AppCompatActivity {
     private Button button,button_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcome_screen);
         button = (Button) findViewById(R.id.button);
         button_login= (Button) findViewById((R.id.button_test_login));
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openActivity2() {
-        Intent intent = new Intent(this, MainActivity2.class);
+        Intent intent = new Intent(this, UploadToFirebaseActivity.class);
         startActivity(intent);
     }
     public void openLoginTest() {

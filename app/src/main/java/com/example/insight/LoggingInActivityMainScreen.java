@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 public class LoggingInActivityMainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,8 @@ public class LoggingInActivityMainScreen extends AppCompatActivity {
 
         //open register activity
 
-        Button buttonRegister=findViewById((R.id.button_register));
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        TextView textViewRegister=findViewById((R.id.textView_register_link));
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LoggingInActivityMainScreen.this,RegisteringActivity.class);

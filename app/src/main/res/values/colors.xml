@@ -5,10 +5,10 @@
     <color name="red">#FF0000</color>
     <color name="lime">#00FF00</color>
     <color name="dark_green">#006400</color>
-    <color name="light_gray">#D3D3D3</color>
-    <color name="purple_700">#f000ff</color>
+    <color name="light_gray">#edf2f7</color>
+    <color name="purple_700">#644ac3</color>
     <color name="purple_200">#ffbb86fc</color>
-    <color name="purple_500">#ff6200ee</color>
+    <color name="purple_500">#754ee4</color>
     <color name="teal_200">#ff03dac5</color>
     <color name="teal_700">#f000ff</color>
 

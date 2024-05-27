@@ -16,47 +16,76 @@
         android:theme="@style/Theme.InSight"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".DeleteAccountActivity"
+        <activity android:name=".DeleteAccountActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LogInActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".ChangePassworgActivity"
+            android:name=".ChangePassworgActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".UserPageActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".UpdateEmailActivity"
+            android:name=".UpdateEmailActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".UserPageActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".UpdateProfileActivity"
+            android:name=".UpdateProfileActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".UserPageActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".UploadProfilePicActivity"
+            android:name=".UploadProfilePicActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".UserPageActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".ForgotPasswordActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".UserPageActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".UserPageActivity"
+            android:name=".UserPageActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".LogInActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".LogInActivity"
+            android:name=".LogInActivity">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+        android:value=".WelcomeScreenActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".LoggingInActivityMainScreen"
+            android:name=".LoggingInActivityMainScreen">
+        <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:value=".LogInActivity"
             android:exported="false" />
+        </activity>
         <activity
-            android:name=".RegisteringActivity"
-            android:exported="false" />
+            android:name=".RegisteringActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LogInActivity"
+                android:exported="false" />
+        </activity>
         <activity
             android:name=".StreamView"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".ViewUploadedImagesActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".UploadToFirebaseActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomeScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

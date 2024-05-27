@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -47,14 +48,25 @@ public class LogInActivity extends AppCompatActivity {
 
         authProfile=FirebaseAuth.getInstance();
 
-        Button buttonForgotPwd = findViewById(R.id.button_forgot_pwd);
-        buttonForgotPwd.setOnClickListener(new View.OnClickListener() {
+        TextView textViewForgotPwd = findViewById(R.id.textView_forgot_password_link);
+        textViewForgotPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(LogInActivity.this,"You can now reset your password!",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(LogInActivity.this,ForgotPasswordActivity.class));
             }
         });
+
+        TextView textViewRegister=findViewById((R.id.textView_register_link));
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LogInActivity.this,RegisteringActivity.class);
+                startActivity(intent);finish();
+            }
+        });
+
+
         //hide password
         ImageView imageviewShowHidePwd = findViewById(R.id.imageView_show_hide_pwd);
         imageviewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);

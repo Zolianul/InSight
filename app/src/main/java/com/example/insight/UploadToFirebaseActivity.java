@@ -29,7 +29,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity2 extends AppCompatActivity {
+public class UploadToFirebaseActivity extends AppCompatActivity {
 
 
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -52,7 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_upload_to_firebase);
 
         mButtonChooseImage = findViewById(R.id.button_choose_image);
         mGoToStream = findViewById(R.id.button_go_to_stream);
@@ -83,7 +83,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mUploadTask != null && mUploadTask.isInProgress()) {
-                    Toast.makeText(MainActivity2.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UploadToFirebaseActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
                 } else {
                     uploadFile();
                 }
@@ -146,7 +146,7 @@ public class MainActivity2 extends AppCompatActivity {
                                 }
                             }, 500);
 
-                            Toast.makeText(MainActivity2.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UploadToFirebaseActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                             Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
@@ -169,7 +169,7 @@ public class MainActivity2 extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity2.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UploadToFirebaseActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -187,7 +187,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     private void openImagesActivity(){
 
-        Intent intent = new Intent(this, MainActivity3.class);
+        Intent intent = new Intent(this, ViewUploadedImagesActivity.class);
         startActivity(intent);
     }
 }
