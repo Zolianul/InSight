@@ -3,6 +3,7 @@ package com.example.insight;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,10 +33,16 @@ public class UserPageActivity extends AppCompatActivity {
     private String fullName,email,dob,gender,mobile;
     private ImageView imageView;
     private FirebaseAuth authProfile;
+
+    private SwipeRefreshLayout swipeContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_page);
+
+        getSupportActionBar().setTitle("Home");
+
+        swipetorefresh();
 
         textViewWelcome=findViewById(R.id.textView_show_welcome);
         textViewFullName=findViewById(R.id.textView_show_full_name);
@@ -66,6 +73,22 @@ public class UserPageActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void swipetorefresh() {
+        swipeContainer= findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                startActivity(getIntent());
+                finish();
+                overridePendingTransition(0,0);
+                swipeContainer.setRefreshing(false);
+            }
+        });
+
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,android.R.color.holo_green_light,android.R.color.holo_orange_light,android.R.color.holo_red_light);
     }
 
     private void checkEmailVerified(FirebaseUser firebaseUser) {

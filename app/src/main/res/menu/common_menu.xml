@@ -5,8 +5,6 @@
     <item android:title="Refresh"
         android:icon="@drawable/ic_refresh_white"
         android:alphabeticShortcut="r"
-        android:orderInCategory="1"
-        app:showAsAction="ifRoom"
         android:id="@+id/menu_refresh"
         />
     <item android:title="Update Profile"
