@@ -3,6 +3,8 @@ package com.example.insight;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -27,12 +29,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 public class UploadProfilePicActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private ImageView imageViewUploadPic;
     private FirebaseAuth authProfile;
     private StorageReference storageReference;
     private FirebaseUser firebaseUser;
+    private SwipeRefreshLayout swipeContainer;
     private static final int PICK_IMAGE_REQUEST =1;
     private Uri uriImage;
 
@@ -42,7 +47,9 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_profile_pic);
 
-        getSupportActionBar().setTitle("UploadProfilePic");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("UploadProfilePic");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        swipeToRefresh();
 
         Button buttonUploadPicChoose = findViewById(R.id.upload_pic_choose_button);
         Button buttonUploadPic=findViewById(R.id.upload_pic_button);
@@ -74,6 +81,19 @@ public class UploadProfilePicActivity extends AppCompatActivity {
                 UploadPic();
             }
         });
+    }
+
+    private void swipeToRefresh() {
+        swipeContainer= findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(() -> {
+            startActivity(getIntent());
+            finish();
+            overridePendingTransition(0,0);
+            swipeContainer.setRefreshing(false);
+        });
+
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,android.R.color.holo_green_light,android.R.color.holo_orange_light,android.R.color.holo_red_light);
     }
 
     private void UploadPic() {
@@ -146,7 +166,10 @@ public class UploadProfilePicActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id==R.id.menu_refresh){
+        if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(UploadProfilePicActivity.this);
+
+        }else if(id==R.id.menu_refresh){
             startActivity(getIntent());
             finish();
             //overridePendingTransition(0,0);

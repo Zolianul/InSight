@@ -168,7 +168,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginLeft="70dp"
                     android:layout_centerHorizontal="true"
-                    android:text="Login" />
+                    android:text="@string/login" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"

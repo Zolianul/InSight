@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <ScrollView xmlns:tools="http://schemas.android.com/tools"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_gray"
         android:orientation="vertical"
-        tools:context=".ChangePassworgActivity">
+        tools:context=".ChangePasswordActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +80,7 @@
 
                         android:layout_toEndOf="@id/imageViewCurrPwd"
                         android:padding="6dp"
-                        android:text="Current Password*" />
+                        android:text="Current Password" />
 
                     <View
                         android:id="@+id/divider_curr_pwd"
@@ -98,7 +102,7 @@
                         android:hint="enter your password"
                         android:inputType="textPassword"
                         android:padding="6dp"
-
+                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
 
                     <ImageView
@@ -174,7 +178,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imageViewNewPwd"
                         android:padding="6dp"
-                        android:text="New Password*" />
+                        android:text="New Password" />
 
                     <View
                         android:id="@+id/divider_pwd"
@@ -196,7 +200,7 @@
                         android:hint="Enter your new password"
                         android:inputType="textPassword"
                         android:padding="6dp"
-
+                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                     <EditText
                         android:id="@+id/editText_change_pwd_new_confirm"
@@ -207,11 +211,12 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewNewPwd"
                         android:background="@android:color/transparent"
-                        android:hint="Enter your new password again"
+                        android:hint="Enter your password again"
                         android:inputType="textPassword"
                         android:padding="6dp"
-
+                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
+
                     <ImageView
                         android:id="@+id/imageView_show_hide_new_pwd"
                         android:layout_width="33dp"
@@ -229,7 +234,7 @@
                     android:layout_below="@id/RL_new_pwd"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    android:text="Change Password" />
+                    android:text="@string/change_password" />
 
             </RelativeLayout>
 
@@ -237,3 +242,5 @@
 
 
     </ScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

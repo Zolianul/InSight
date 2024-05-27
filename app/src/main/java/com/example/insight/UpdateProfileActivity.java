@@ -2,6 +2,8 @@ package com.example.insight;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,11 +46,16 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private String textFullName, textDob,textGender, textMobile;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Update your profile");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        swipeToRefresh();
 
         progressBar = findViewById(R.id.progressBar);
         editTextUpdateName=findViewById(R.id.editText_update_profile_name);
@@ -61,8 +70,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
 
         //upload profile picture
-        Button buttonUploadProfilePic= findViewById(R.id.button_update_picture);
-        buttonUploadProfilePic.setOnClickListener(new View.OnClickListener() {
+        TextView textViewUploadProfilePic= findViewById(R.id.textView_profile_upload_pic);
+        textViewUploadProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( UpdateProfileActivity.this, UploadProfilePicActivity.class);
@@ -71,8 +80,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonupdateEmail= findViewById(R.id.button_update_email);
-                buttonupdateEmail.setOnClickListener(new View.OnClickListener() {
+        TextView textViewupdateEmail= findViewById(R.id.textView_profile_update_email);
+        textViewupdateEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( UpdateProfileActivity.this, UpdateEmailActivity.class);
@@ -235,7 +244,18 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
         });
     }
+    private void swipeToRefresh() {
+        swipeContainer= findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(() -> {
+            startActivity(getIntent());
+            finish();
+            overridePendingTransition(0,0);
+            swipeContainer.setRefreshing(false);
+        });
 
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,android.R.color.holo_green_light,android.R.color.holo_orange_light,android.R.color.holo_red_light);
+    }
     @Override
     public boolean onCreateOptionsMenu( Menu menu){
         getMenuInflater().inflate(R.menu.common_menu,menu);
@@ -245,7 +265,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id==R.id.menu_refresh){
+        if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(UpdateProfileActivity.this);
+
+        }else if(id==R.id.menu_refresh){
             startActivity(getIntent());
             finish();
             //overridePendingTransition(0,0);

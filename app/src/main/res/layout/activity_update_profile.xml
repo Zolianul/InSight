@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_gray"
@@ -95,6 +98,7 @@
                         android:background="@android:color/transparent"
                         android:inputType="textPersonName"
                         android:padding="6dp"
+                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                 </RelativeLayout>
 
@@ -142,6 +146,7 @@
                         android:background="@android:color/transparent"
                         android:inputType="date"
                         android:padding="6dp"
+                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
 
                     <ImageView
@@ -200,7 +205,7 @@
                             android:id="@+id/radio_female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/purple_700"
+                            android:buttonTint="@color/purple_500"
                             android:text="Female"
                             android:textColor="#666666"
                             android:textSize="16sp" />
@@ -209,7 +214,7 @@
                             android:id="@+id/radio_male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/purple_700"
+                            android:buttonTint="@color/purple_500"
                             android:text="Male"
                             android:textColor="#666666"
                             android:textSize="16sp" />
@@ -240,7 +245,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imageViewMobile"
                         android:padding="6dp"
-                        android:text="Mobile" />
+                        android:text="Phone number" />
 
                     <View
                         android:id="@+id/divider_mobile"
@@ -261,6 +266,7 @@
                         android:background="@android:color/transparent"
                         android:inputType="phone"
                         android:padding="6dp"
+                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                 </RelativeLayout>
 
@@ -273,25 +279,6 @@
                     android:layout_marginTop="30dp"
                     android:text="Update Profile"
                     android:textAlignment="center" />
-                <Button
-                    android:id="@+id/button_update_email"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/button_update_profile"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Update Email"
-                    android:textAlignment="center" />
-                <Button
-                    android:id="@+id/button_update_picture"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/button_update_email"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Update pic"
-                    android:textAlignment="center" />
-
 
                 <TextView
                     android:id="@+id/textView_profile_upload_pic"
@@ -301,7 +288,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="50dp"
-                     />
+                    android:textColor="@color/purple_700"
+                    android:text="@string/upload_pic_u" />
 
                 <TextView
                     android:id="@+id/textView_profile_update_email"
@@ -310,7 +298,8 @@
                     android:layout_below="@id/button_update_profile"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="50dp"
-                     />
+                    android:textColor="@color/purple_700"
+                    android:text="@string/update_email_u" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -327,3 +316,5 @@
         </LinearLayout>
 
     </ScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

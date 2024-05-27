@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,11 +44,17 @@ public class RegisteringActivity extends AppCompatActivity {
     private RadioGroup radioGroupRegisterGender;
     private DatePickerDialog picker;
     private RadioButton radioButtonRegisterGenderSelected;
+    private SwipeRefreshLayout swipeContainer;
     private static final String TAG="RegisteringActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registering);
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Register yourself");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        swipeToRefresh();
+
 
         //getSupportActionBar().setTitle("Register");
         Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
@@ -164,6 +172,21 @@ public class RegisteringActivity extends AppCompatActivity {
         });
 
     }
+
+    private void swipeToRefresh() {
+        swipeContainer= findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(() -> {
+            startActivity(getIntent());
+            finish();
+            overridePendingTransition(0,0);
+            swipeContainer.setRefreshing(false);
+        });
+
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,android.R.color.holo_green_light,android.R.color.holo_orange_light,android.R.color.holo_red_light);
+    }
+
+
     //create a user
     private void registerUser(String textFullName, String textEmail, String textDoB, String textGender,String textMobile, String textPwd){
         FirebaseAuth auth = FirebaseAuth.getInstance();

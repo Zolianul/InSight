@@ -10,7 +10,7 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose file to uploadToFirebase" />
+        android:text="@string/choose_file" />
 
     <Button
         android:id="@+id/button_go_to_stream"
@@ -20,7 +20,7 @@
         android:layout_alignTop="@+id/button_upload"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:text="Go to the stream" />
+        android:text="@string/go_to_the_stream" />
 
     <EditText
         android:id="@+id/edit_text_file_name"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@+id/button_choose_image"
-        android:hint="Choose a file name" />
+        android:hint="Enter a file name" />
 
     <ImageView
         android:id="@+id/image_view"
@@ -54,7 +54,7 @@
         android:layout_toEndOf="@+id/button_go_to_stream"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Upload" />
+        android:text="@string/upload" />
 
     <TextView
         android:id="@+id/text_view_show_uploads"
@@ -65,6 +65,7 @@
         android:layout_marginStart="25dp"
         android:layout_toEndOf="@+id/button_upload"
         android:gravity="center"
-        android:text="Show Uploads"
+        android:text="@string/show_uploads"
+        android:textColor="@color/purple_700"
         android:textSize="16sp" />
 </RelativeLayout>

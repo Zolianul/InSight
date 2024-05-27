@@ -2,7 +2,9 @@ package com.example.insight;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Build;
@@ -25,6 +27,8 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class UpdateEmailActivity extends AppCompatActivity {
 
 
@@ -34,6 +38,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
     private TextView textViewAuthenticated;
     private String userOldEmail, userNewEmail,userPassword;
     private Button buttonUpdateEmail;
+    private SwipeRefreshLayout swipeContainer;
     private EditText editTextNewEmail, editTextPwd;
 
     @Override
@@ -41,7 +46,9 @@ public class UpdateEmailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_email);
 
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Update your email");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        swipeToRefresh();
         progressBar=findViewById(R.id.progressBar);
         editTextPwd=findViewById(R.id.editText_update_email_verify_password);
         editTextNewEmail= findViewById(R.id.editText_update_email_new);
@@ -67,6 +74,19 @@ public class UpdateEmailActivity extends AppCompatActivity {
             reAuthenticate(firebaseUser);
         }
 
+    }
+
+    private void swipeToRefresh() {
+        swipeContainer= findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(() -> {
+            startActivity(getIntent());
+            finish();
+            overridePendingTransition(0,0);
+            swipeContainer.setRefreshing(false);
+        });
+
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,android.R.color.holo_green_light,android.R.color.holo_orange_light,android.R.color.holo_red_light);
     }
 
     private void reAuthenticate(FirebaseUser firebaseUser) {
@@ -196,7 +216,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id==R.id.menu_refresh){
+        if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(UpdateEmailActivity.this);
+
+        } else if(id==R.id.menu_refresh){
             startActivity(getIntent());
             finish();
             //overridePendingTransition(0,0);
