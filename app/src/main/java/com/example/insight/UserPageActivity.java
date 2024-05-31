@@ -168,8 +168,9 @@ public class UserPageActivity extends AppCompatActivity {
     if(id == android.R.id.home){
         NavUtils.navigateUpFromSameTask(UserPageActivity.this);
 
-    } else if(id==R.id.menu_refresh){
-        startActivity(getIntent());
+    } else if(id==R.id.menu_myProfile){
+        Intent intent = new Intent(UserPageActivity.this, UserPageActivity.class);
+        startActivity(intent);
         finish();
         //overridePendingTransition(0,0);
     } else if( id==R.id.menu_updateProfile){
@@ -180,8 +181,6 @@ public class UserPageActivity extends AppCompatActivity {
         Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
         startActivity(intent);
         finish();
-    }else if( id==R.id.menu_settings){
-        Toast.makeText(UserPageActivity.this, "menu settings",Toast.LENGTH_LONG).show();
     }else if( id==R.id.menu_changePwd){
         Intent intent = new Intent(UserPageActivity.this, ChangePassworgActivity.class);
         startActivity(intent);finish();

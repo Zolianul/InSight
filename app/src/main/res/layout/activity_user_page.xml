@@ -44,7 +44,7 @@
                             android:layout_width="160dp"
                             android:layout_height="160dp"
                             android:contentDescription="@string/user_display_picture"
-                            android:background="@drawable/no_profile_pic"
+                            android:background="@drawable/default_profile_pic"
                             android:scaleType="centerCrop" />
                     </androidx.cardview.widget.CardView>
                     <ProgressBar
@@ -95,7 +95,7 @@
                         android:layout_centerVertical="true"
                         android:id="@+id/ic_profile"
                         android:contentDescription="@string/name"
-                        android:background="@drawable/ic_profile"/>
+                        android:background="@drawable/profile_img"/>
 
                     <TextView
                         android:id="@+id/textView_show_full_name"
@@ -130,7 +130,7 @@
                         android:id="@+id/ic_email"
                         android:contentDescription="@string/email"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_email"/>
+                        android:background="@drawable/email_img"/>
 
                     <TextView
                         android:id="@+id/textView_show_email"
@@ -166,7 +166,7 @@
                         android:layout_centerVertical="true"
                         android:id="@+id/ic_dob"
                         android:contentDescription="@string/DoB"
-                        android:background="@drawable/ic_birthday"/>
+                        android:background="@drawable/birthday_img"/>
 
                     <TextView
                         android:id="@+id/textView_show_dob"
@@ -202,7 +202,7 @@
                         android:contentDescription="@string/gender"
                         android:layout_centerVertical="true"
                         android:layout_marginTop="20dp"
-                        android:background="@drawable/ic_gender"/>
+                        android:background="@drawable/gender_img"/>
 
                     <TextView
                         android:id="@+id/textView_show_gender"
@@ -237,7 +237,7 @@
                         android:layout_marginTop="20dp"
                         android:id="@+id/ic_mobile"
                         android:contentDescription="@string/phone"
-                        android:background="@drawable/ic_mobile"/>
+                        android:background="@drawable/phone_no_img"/>
 
                     <TextView
                         android:id="@+id/textView_show_mobile"

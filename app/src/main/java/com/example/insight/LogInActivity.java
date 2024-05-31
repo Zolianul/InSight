@@ -69,17 +69,17 @@ public class LogInActivity extends AppCompatActivity {
 
         //hide password
         ImageView imageviewShowHidePwd = findViewById(R.id.imageView_show_hide_pwd);
-        imageviewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);
+        imageviewShowHidePwd.setImageResource(R.drawable.hide_pwd);
         imageviewShowHidePwd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 if(editTextPwd.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
                     //iff pwd is visible, set it invisible
                     editTextPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    imageviewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);
+                    imageviewShowHidePwd.setImageResource(R.drawable.hide_pwd);
                 }else{
                     editTextPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    imageviewShowHidePwd.setImageResource(R.drawable.ic_show_pwd);
+                    imageviewShowHidePwd.setImageResource(R.drawable.show_pwd);
                 }
             }
         });

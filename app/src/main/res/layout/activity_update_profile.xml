@@ -37,7 +37,6 @@
                     android:id="@+id/textView_update_profile_instruction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="You can update your profile to stay up to date!"
                     android:textAlignment="center"
                     android:layout_marginRight="30dp"
                     android:textColor="@color/white"
@@ -69,7 +68,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_profile" />
+                        android:src="@drawable/profile_img" />
 
                     <TextView
                         android:id="@+id/textView_update_profile_name"
@@ -117,7 +116,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_birthday" />
+                        android:src="@drawable/birthday_img" />
 
                     <TextView
                         android:id="@+id/textView_update_profile_dob"
@@ -156,7 +155,7 @@
                         android:layout_below="@id/textView_update_profile_dob"
                         android:layout_marginTop="10dp"
                         android:layout_toEndOf="@id/editText_update_profile_dob"
-                        android:src="@drawable/ic_calendar" />
+                        android:src="@drawable/calendar_img" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -174,7 +173,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_gender" />
+                        android:src="@drawable/gender_img" />
 
                     <TextView
                         android:id="@+id/textView_update_profile_gender"
@@ -237,7 +236,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_mobile" />
+                        android:src="@drawable/phone_no_img" />
 
                     <TextView
                         android:id="@+id/textView_update_profile_mobile"

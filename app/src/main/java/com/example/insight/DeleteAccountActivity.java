@@ -52,7 +52,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
 
 
         progressBar=findViewById(R.id.progressBar);
-        editTextUserPwd = findViewById(R.id.editText_delete_user_pwd);
+        editTextUserPwd = findViewById(R.id.edit_text_delete_user_pwd);
         textViewUserAuthenticated = findViewById(R.id.textView_delete_user_authenticated);
         buttonDeleteUser = findViewById(R.id.button_delete_user);
         buttonReAuthenticate=findViewById(R.id.button_delete_user_authenticate);
@@ -236,10 +236,10 @@ alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id==R.id.menu_refresh){
-            startActivity(getIntent());
+        if(id==R.id.menu_myProfile){
+            Intent intent = new Intent(DeleteAccountActivity.this, UserPageActivity.class);
+            startActivity(intent);
             finish();
-            //overridePendingTransition(0,0);
         } else if( id==R.id.menu_updateProfile){
             Intent intent = new Intent(DeleteAccountActivity.this, UpdateProfileActivity.class);
             startActivity(intent);
@@ -247,8 +247,6 @@ alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
         }else if( id==R.id.menu_updateEmail){
             Intent intent = new Intent(DeleteAccountActivity.this, UpdateEmailActivity.class);
             startActivity(intent);finish();
-        }else if( id==R.id.menu_settings){
-            Toast.makeText(DeleteAccountActivity.this, "menu settings",Toast.LENGTH_LONG).show();
         }else if( id==R.id.menu_changePwd){
             Intent intent = new Intent(DeleteAccountActivity.this, ChangePassworgActivity.class);
             startActivity(intent);finish();

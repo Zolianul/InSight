@@ -41,7 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:text="You can update your email address after you authenticate your profile by entering your password."
+                    android:layout_marginTop="20dp"
+                    android:text="You must authenticate in order to \n change your email address."
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Menu"
                     android:textColor="@color/white" />
@@ -74,7 +75,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_email" />
+                        android:src="@drawable/email_img" />
 
                     <TextView
                         android:id="@+id/textView_update_email"
@@ -103,6 +104,7 @@
                         android:layout_toEndOf="@id/imageViewEmail"
                         android:background="@android:color/transparent"
                         android:padding="6dp"
+                        android:hint="Enter your Email"
                         android:textColor="#555555"
                         android:textSize="16sp" />
                 </RelativeLayout>
@@ -122,7 +124,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_pwd_bw" />
+                        android:src="@drawable/pwd_img" />
 
                     <TextView
                         android:id="@+id/textView_update_email_verify_password"
@@ -130,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imageViewPwd"
                         android:padding="6dp"
-                        android:text="Password*" />
+                        android:text="Password" />
 
                     <View
                         android:id="@+id/divider_pwd"
@@ -149,7 +151,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewPwd"
                         android:background="@android:color/transparent"
-                        android:hint="enter your password"
+                        android:hint="Enter your password"
                         android:inputType="textPassword"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -218,7 +220,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_email" />
+                        android:src="@drawable/email_img" />
 
                     <TextView
                         android:id="@+id/textView_update_email_new"
@@ -226,7 +228,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imageViewNewEmail"
                         android:padding="6dp"
-                        android:text="New Email*" />
+                        android:text="New Email" />
 
                     <View
                         android:id="@+id/divider_new_email"
@@ -245,7 +247,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewNewEmail"
                         android:background="@android:color/transparent"
-                        android:hint="enter your new email address"
+                        android:hint="Enter your new email address"
                         android:inputType="textEmailAddress"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"

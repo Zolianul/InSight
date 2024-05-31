@@ -219,8 +219,9 @@ public class UpdateEmailActivity extends AppCompatActivity {
         if(id == android.R.id.home){
             NavUtils.navigateUpFromSameTask(UpdateEmailActivity.this);
 
-        } else if(id==R.id.menu_refresh){
-            startActivity(getIntent());
+        } else if(id==R.id.menu_myProfile){
+            Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
+            startActivity(intent);
             finish();
             //overridePendingTransition(0,0);
         } else if( id==R.id.menu_updateProfile){
@@ -231,8 +232,6 @@ public class UpdateEmailActivity extends AppCompatActivity {
             Intent intent = new Intent(UpdateEmailActivity.this, UpdateEmailActivity.class);
             startActivity(intent);
             finish();
-        }else if( id==R.id.menu_settings){
-            Toast.makeText(UpdateEmailActivity.this, "menu settings",Toast.LENGTH_LONG).show();
         }else if( id==R.id.menu_changePwd){
         Intent intent = new Intent(UpdateEmailActivity.this, ChangePassworgActivity.class);
         startActivity(intent);

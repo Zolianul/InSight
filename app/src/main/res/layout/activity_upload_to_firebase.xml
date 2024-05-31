@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UploadToFirebaseActivity"
-    android:background="@drawable/bkg2">
+    android:background="@color/light_gray">
 
     <Button
         android:id="@+id/button_choose_image"
@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/button_go_to_stream"
         android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
         android:layout_centerHorizontal="true"
         android:text="@string/upload" />
 

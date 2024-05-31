@@ -13,7 +13,7 @@
     <string name="authenticate"><u>Authenticate</u></string>
     <string name="go_to_the_stream"><u>Go to the stream</u></string>
     <string name="choose_file"><u>Choose file</u></string>
-    <string name="upload"><u>>Upload</u></string>
+    <string name="upload"><u>Upload</u></string>
     <string name="show_uploads"><u>Show Uploads</u></string>
     <string name="user_display_picture">User picture</string>
     <string name="loading">Loading...</string>

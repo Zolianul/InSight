@@ -24,7 +24,7 @@
                 android:background="@color/purple_700">
 
                 <TextView
-                    android:id="@+id/textView_change_pwd_head"
+                    android:id="@+id/text_view_change_pwd_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -34,14 +34,14 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                 <TextView
-                    android:id="@+id/textView_change_pwd_instruction"
+                    android:id="@+id/text_view_change_pwd_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:textColor="@color/white"
-                    android:layout_below="@id/textView_change_pwd_head"
-                    android:text="You can change your password after authenticating your profile by entering your current password"
+                    android:layout_below="@id/text_view_change_pwd_title"
+                    android:text="You must authenticate\n before you can change your password"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
@@ -71,10 +71,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_pwd_bw" />
+                        android:src="@drawable/pwd_img" />
 
                     <TextView
-                        android:id="@+id/textView_change_pwd_current"
+                        android:id="@+id/text_view_change_current_pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
@@ -86,20 +86,20 @@
                         android:id="@+id/divider_curr_pwd"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
-                        android:layout_below="@id/textView_change_pwd_current"
+                        android:layout_below="@id/text_view_change_current_pwd"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/darker_gray" />
 
                     <EditText
-                        android:id="@+id/editText_change_pwd_current"
+                        android:id="@+id/edit_text_change_current_pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_change_pwd_current"
+                        android:layout_below="@id/text_view_change_current_pwd"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewCurrPwd"
                         android:background="@android:color/transparent"
-                        android:hint="enter your password"
+                        android:hint="Enter your password"
                         android:inputType="textPassword"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -109,14 +109,14 @@
                         android:id="@+id/imageView_show_hide_curr_pwd"
                         android:layout_width="33dp"
                         android:layout_height="33dp"
-                        android:layout_below="@id/textView_change_pwd_current"
+                        android:layout_below="@id/text_view_change_current_pwd"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp" />
                 </RelativeLayout>
 
                 <Button
-                    android:id="@+id/button_change_pwd_authenticate"
+                    android:id="@+id/button_authenticate_change_pwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_curr_pwd"
@@ -145,7 +145,7 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/textView_change_pwd_authenticated"
+                    android:id="@+id/text_view_authenticated_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -160,7 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:layout_below="@id/textView_change_pwd_authenticated"
+                    android:layout_below="@id/text_view_authenticated_message"
                     android:background="@drawable/border">
 
                     <ImageView
@@ -170,10 +170,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_pwd_bw" />
+                        android:src="@drawable/pwd_img" />
 
                     <TextView
-                        android:id="@+id/textView_change_pwd_new"
+                        android:id="@+id/text_view_change_new_pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imageViewNewPwd"
@@ -184,15 +184,15 @@
                         android:id="@+id/divider_pwd"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
-                        android:layout_below="@id/textView_change_pwd_new"
+                        android:layout_below="@id/text_view_change_new_pwd"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/darker_gray" />
 
                     <EditText
-                        android:id="@+id/editText_change_pwd_new"
+                        android:id="@+id/edit_text_change_pwd_new"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_change_pwd_new"
+                        android:layout_below="@id/text_view_change_new_pwd"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewNewPwd"
@@ -203,15 +203,15 @@
                         android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                     <EditText
-                        android:id="@+id/editText_change_pwd_new_confirm"
+                        android:id="@+id/edit_text_confirm_new_pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/editText_change_pwd_new"
+                        android:layout_below="@id/edit_text_change_pwd_new"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewNewPwd"
                         android:background="@android:color/transparent"
-                        android:hint="Enter your password again"
+                        android:hint="Enter the new password again"
                         android:inputType="textPassword"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -221,7 +221,7 @@
                         android:id="@+id/imageView_show_hide_new_pwd"
                         android:layout_width="33dp"
                         android:layout_height="33dp"
-                        android:layout_below="@id/textView_change_pwd_new"
+                        android:layout_below="@id/text_view_change_new_pwd"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp" />

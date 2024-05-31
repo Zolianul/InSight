@@ -71,7 +71,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_profile" />
+                        android:src="@drawable/profile_img" />
 
                     <TextView
                         android:id="@+id/textView_register_full_name"
@@ -120,7 +120,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_email" />
+                        android:src="@drawable/email_img" />
 
                     <TextView
                         android:id="@+id/textView_register_email"
@@ -169,7 +169,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_birthday" />
+                        android:src="@drawable/birthday_img" />
 
                     <TextView
                         android:id="@+id/textView_register_dob"
@@ -210,7 +210,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/editText_register_dob"
-                        android:src="@drawable/ic_calendar" />
+                        android:src="@drawable/calendar_img" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -228,7 +228,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_gender" />
+                        android:src="@drawable/gender_img" />
 
                     <TextView
                         android:id="@+id/textView_register_gender"
@@ -291,7 +291,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_mobile" />
+                        android:src="@drawable/phone_no_img" />
 
                     <TextView
                         android:id="@+id/textView_register_mobile"
@@ -340,7 +340,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_pwd_bw" />
+                        android:src="@drawable/pwd_img" />
 
                     <TextView
                         android:id="@+id/textView_register_password"
@@ -398,23 +398,13 @@
 
                 </RelativeLayout>
 
-                <CheckBox
-                    android:id="@+id/checkBox_terms_conditions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/RL_pwd"
-                    android:layout_marginTop="10dp"
-                    android:buttonTint="@color/purple_500"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:text="I agree with the Terms of Service and Privacy Policy"
-                    android:textColor="#444" />
+
 
                 <Button
                     android:id="@+id/button_register"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/checkBox_terms_conditions"
+                    android:layout_below="@id/RL_pwd"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="50dp"
