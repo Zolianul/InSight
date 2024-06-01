@@ -1,4 +1,4 @@
-package com.example.insight;
+/*package com.example.insight;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,4 +39,4 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoggingInActivityMainScreen.class);
         startActivity(intent);
     }
-}
+}*/

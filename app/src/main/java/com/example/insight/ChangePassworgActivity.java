@@ -25,6 +25,8 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class ChangePassworgActivity extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
@@ -38,6 +40,11 @@ public class ChangePassworgActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Change Password");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         setContentView(R.layout.activity_change_passworg);
 
         progressBar=findViewById(R.id.progressBar);
@@ -187,10 +194,10 @@ public class ChangePassworgActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id == android.R.id.home){
+        /*if(id == android.R.id.home){
             NavUtils.navigateUpFromSameTask(ChangePassworgActivity.this);
 
-        }else if(id==R.id.menu_myProfile){
+        }else */if(id==R.id.menu_myProfile){
             Intent intent = new Intent(ChangePassworgActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();

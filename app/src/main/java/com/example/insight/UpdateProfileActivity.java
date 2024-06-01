@@ -52,7 +52,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Update your profile");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
         progressBar = findViewById(R.id.progressBar);
@@ -253,10 +253,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id == android.R.id.home){
+        /*if(id == android.R.id.home){
             NavUtils.navigateUpFromSameTask(UpdateProfileActivity.this);
 
-        }else if(id==R.id.menu_myProfile){
+        }else*/ if(id==R.id.menu_myProfile){
             Intent intent = new Intent(UpdateProfileActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();

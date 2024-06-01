@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private FirebaseUser firebaseUser;
+    private EditText editText_img_name;
     private SwipeRefreshLayout swipeContainer;
     //private TextView mTextViewShowUploads;
     private static final int PICK_IMAGE_REQUEST =1;
@@ -52,14 +54,15 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_to_firebase);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("UploadProfilePic");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Upload to Firebase");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
         Button buttonUploadPicChoose = findViewById(R.id.button_choose_image);
         Button buttonUploadPic=findViewById(R.id.button_upload);
         progressBar=findViewById(R.id.progressBar);
         imageViewUploadPic=findViewById(R.id.image_view_img_to_upload);
+        editText_img_name=findViewById(R.id.edit_text_file_name);
         //mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
         authProfile = FirebaseAuth.getInstance();
         firebaseUser =authProfile.getCurrentUser();
@@ -111,7 +114,7 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
 
     private void UploadPic() {
         if(uriImage!=null){
-            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"/usr_upload."+System.currentTimeMillis()+getFileExtension(uriImage));
+            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"/usr_upload."+editText_img_name.getText().toString()+System.currentTimeMillis()+getFileExtension(uriImage));
             //ulpoad to storage
 
             fileReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -176,10 +179,10 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id == android.R.id.home){
+        /*if(id == android.R.id.home){
             NavUtils.navigateUpFromSameTask(UploadToFirebaseActivity.this);
 
-        }else if(id==R.id.menu_myProfile){
+        }else*/ if(id==R.id.menu_myProfile){
             Intent intent = new Intent(UploadToFirebaseActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();

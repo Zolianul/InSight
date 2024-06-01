@@ -51,7 +51,7 @@ public class RegisteringActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registering);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Register yourself");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
 

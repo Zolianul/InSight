@@ -28,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class LogInActivity extends AppCompatActivity {
 
         private EditText editTextEmail, editTextPwd;
@@ -39,7 +41,8 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Log In");
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextEmail=findViewById(R.id.edit_text_login_email);
         editTextPwd=findViewById(R.id.edit_text_login_pwd);

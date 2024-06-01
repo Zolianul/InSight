@@ -45,7 +45,7 @@ public class UserPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_page);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
         textViewWelcome=findViewById(R.id.text_view_show_welcome_msg);
@@ -172,43 +172,43 @@ public class UserPageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
     int id =item.getItemId();
 
-    if(id == android.R.id.home){
+    /*if(id == android.R.id.home){
         NavUtils.navigateUpFromSameTask(UserPageActivity.this);
 
-    } else if(id==R.id.menu_myProfile){
+    } else */if(id==R.id.menu_myProfile){
         Intent intent = new Intent(UserPageActivity.this, UserPageActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
         //overridePendingTransition(0,0);
     } else if( id==R.id.menu_updateProfile){
         Intent intent = new Intent(UserPageActivity.this, UpdateProfileActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }else if( id==R.id.menu_updateEmail){
         Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }else if(id==R.id.menu_uploadImg){
         Intent intent = new Intent(UserPageActivity.this, UploadToFirebaseActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }else if( id==R.id.menu_liveStream){
         Intent intent = new Intent(UserPageActivity.this, StreamView.class);
         startActivity(intent);
-        finish();
+        //finish();
     }else if( id==R.id.menu_changePwd){
         Intent intent = new Intent(UserPageActivity.this, ChangePassworgActivity.class);
-        startActivity(intent);finish();
+        startActivity(intent);//finish();
     }else if( id==R.id.menu_deleteAcc){
         Intent intent = new Intent(UserPageActivity.this, DeleteAccountActivity.class);
-        startActivity(intent);finish();
+        startActivity(intent);//finish();
     }else if( id==R.id.menu_Logout){
         authProfile.signOut();
         Toast.makeText(UserPageActivity.this, "Logged out",Toast.LENGTH_LONG).show();
         Intent intent = new Intent(UserPageActivity.this, LoggingInActivityMainScreen.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finish();
+        //finish();
 
     }else{
         Toast.makeText(UserPageActivity.this, "Something went wrong",Toast.LENGTH_LONG).show();

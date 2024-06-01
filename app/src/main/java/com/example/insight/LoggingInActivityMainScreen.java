@@ -8,9 +8,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 public class LoggingInActivityMainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Logging In");
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView((R.layout.activity_logging_in));
 
 

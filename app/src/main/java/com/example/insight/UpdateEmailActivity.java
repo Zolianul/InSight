@@ -47,7 +47,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_email);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Update your email");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
         progressBar=findViewById(R.id.progressBar);
         editTextPwd=findViewById(R.id.edit_text_update_email_pwd);
@@ -216,10 +216,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id == android.R.id.home){
+        /*if(id == android.R.id.home){
             NavUtils.navigateUpFromSameTask(UpdateEmailActivity.this);
 
-        } else if(id==R.id.menu_myProfile){
+        } else*/ if(id==R.id.menu_myProfile){
             Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();

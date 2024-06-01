@@ -48,7 +48,7 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload_profile_pic);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("UploadProfilePic");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
         Button buttonUploadPicChoose = findViewById(R.id.button_choose_picture);
@@ -166,10 +166,10 @@ public class UploadProfilePicActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id == android.R.id.home){
+        /*if(id == android.R.id.home){
             NavUtils.navigateUpFromSameTask(UploadProfilePicActivity.this);
 
-        }else if(id==R.id.menu_myProfile){
+        }else*/ if(id==R.id.menu_myProfile){
             Intent intent = new Intent(UploadProfilePicActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();

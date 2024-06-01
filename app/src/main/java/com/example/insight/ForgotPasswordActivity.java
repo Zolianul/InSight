@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
+import java.util.Objects;
+
 public class ForgotPasswordActivity extends AppCompatActivity {
 private Button buttonPwdReset;
 private EditText editTextPwdResetEmail;
@@ -29,6 +31,8 @@ private final static String TAG ="ForgotPasswordActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Forgot Password");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_forgot_password);
 
 

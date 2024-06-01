@@ -3,6 +3,7 @@ package com.example.insight;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
@@ -33,6 +34,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Objects;
+
 public class DeleteAccountActivity extends AppCompatActivity {
 
 
@@ -48,6 +51,9 @@ public class DeleteAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Delete Account");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_delete_account);
 
 
@@ -236,7 +242,10 @@ alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int id =item.getItemId();
-        if(id==R.id.menu_myProfile){
+        /*if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(DeleteAccountActivity.this);
+
+        }else*/ if(id==R.id.menu_myProfile){
             Intent intent = new Intent(DeleteAccountActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();
