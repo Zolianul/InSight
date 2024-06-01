@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class UserPageActivity extends AppCompatActivity {
     private ImageView imageView;
     private FirebaseAuth authProfile;
 
+
     private SwipeRefreshLayout swipeContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +48,20 @@ public class UserPageActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
-        textViewWelcome=findViewById(R.id.textView_show_welcome);
-        textViewFullName=findViewById(R.id.textView_show_full_name);
-        textViewEmail=findViewById(R.id.textView_show_email);
-        textViewDoB=findViewById(R.id.textView_show_dob);
-        textViewGender=findViewById(R.id.textView_show_gender);
-        textViewMobile=findViewById(R.id.textView_show_mobile);
+        textViewWelcome=findViewById(R.id.text_view_show_welcome_msg);
+        textViewFullName=findViewById(R.id.text_view_show_full_name);
+        textViewEmail=findViewById(R.id.text_view_show_email);
+        textViewDoB=findViewById(R.id.text_view_show_birthday);
+        textViewGender=findViewById(R.id.text_view_show_gender);
+        textViewMobile=findViewById(R.id.text_view_show_phone_no);
         progressBar=findViewById(R.id.progress_bar);
 
-        imageView=findViewById(R.id.imageView_profile_dp);
+        imageView=findViewById(R.id.image_view_profile_pic);
+
+
+
+
+
         imageView.setOnClickListener(v -> {
     Intent intent = new Intent(UserPageActivity.this,UploadProfilePicActivity.class);
     startActivity(intent);
@@ -179,6 +186,14 @@ public class UserPageActivity extends AppCompatActivity {
         finish();
     }else if( id==R.id.menu_updateEmail){
         Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
+        startActivity(intent);
+        finish();
+    }else if(id==R.id.menu_uploadImg){
+        Intent intent = new Intent(UserPageActivity.this, UploadToFirebaseActivity.class);
+        startActivity(intent);
+        finish();
+    }else if( id==R.id.menu_liveStream){
+        Intent intent = new Intent(UserPageActivity.this, StreamView.class);
         startActivity(intent);
         finish();
     }else if( id==R.id.menu_changePwd){

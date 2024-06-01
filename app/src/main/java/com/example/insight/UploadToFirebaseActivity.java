@@ -1,17 +1,20 @@
 package com.example.insight;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,89 +22,134 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 public class UploadToFirebaseActivity extends AppCompatActivity {
+    private ProgressBar progressBar;
+    private ImageView imageViewUploadPic;
+    private FirebaseAuth authProfile;
+    private StorageReference storageReference;
+    private DatabaseReference databaseReference;
+    private FirebaseUser firebaseUser;
+    private SwipeRefreshLayout swipeContainer;
+    //private TextView mTextViewShowUploads;
+    private static final int PICK_IMAGE_REQUEST =1;
+    private Uri uriImage;
 
-
-    private static final int PICK_IMAGE_REQUEST = 1;
-
-    private Button mButtonChooseImage;
-    private Button mButtonUpload;
-    private Button mGoToStream;
-    private TextView mTextViewShowUploads;
-    private EditText mEditTextFileName;
-    private ImageView mImageView;
-    private ProgressBar mProgressBar;
-
-    private Uri mImageUri;
-
-    private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef;
-
-    private StorageTask mUploadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_to_firebase);
 
-        mButtonChooseImage = findViewById(R.id.button_choose_image);
-        mGoToStream = findViewById(R.id.button_go_to_stream);
-        mButtonUpload = findViewById(R.id.button_upload);
-        mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
-        mEditTextFileName = findViewById(R.id.edit_text_file_name);
-        mImageView = findViewById(R.id.image_view);
-        mProgressBar = findViewById(R.id.progress_bar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("UploadProfilePic");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        swipeToRefresh();
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("home/raspberry_user/pi");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("home/raspberry_user/pi");
+        Button buttonUploadPicChoose = findViewById(R.id.button_choose_image);
+        Button buttonUploadPic=findViewById(R.id.button_upload);
+        progressBar=findViewById(R.id.progressBar);
+        imageViewUploadPic=findViewById(R.id.image_view_img_to_upload);
+        //mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
+        authProfile = FirebaseAuth.getInstance();
+        firebaseUser =authProfile.getCurrentUser();
+        storageReference= FirebaseStorage.getInstance().getReference("UserUploads");
+        //databaseReference= FirebaseDatabase.getInstance().getReference("home/raspberry_user/pi");
+        Uri uri= firebaseUser.getPhotoUrl();
 
-        mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
+
+
+        Picasso.with(UploadToFirebaseActivity.this).load(uri).into(imageViewUploadPic);
+
+        buttonUploadPicChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFileChooser();
             }
         });
-
-        mGoToStream.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openStreamView();
-            }
-        });
-
-        mButtonUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mUploadTask != null && mUploadTask.isInProgress()) {
-                    Toast.makeText(UploadToFirebaseActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
-                } else {
-                    uploadFile();
-                }
-            }
-        });
-
+/*
         mTextViewShowUploads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openImagesActivity();
+                Intent intent = new Intent(UploadToFirebaseActivity.this, ViewUploadedImagesActivity.class);
+                startActivity(intent);
+            }
+        });*/
+
+
+        buttonUploadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                UploadPic();
             }
         });
     }
 
-    public void openStreamView() {
-        Intent intent = new Intent(this, StreamView.class);
-        startActivity(intent);
+    private void swipeToRefresh() {
+        swipeContainer= findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(() -> {
+            startActivity(getIntent());
+            finish();
+            overridePendingTransition(0,0);
+            swipeContainer.setRefreshing(false);
+        });
+
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,android.R.color.holo_green_light,android.R.color.holo_orange_light,android.R.color.holo_red_light);
     }
+
+    private void UploadPic() {
+        if(uriImage!=null){
+            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"/usr_upload."+System.currentTimeMillis()+getFileExtension(uriImage));
+            //ulpoad to storage
+
+            fileReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri downloadUri= uri;
+                            firebaseUser = authProfile.getCurrentUser();
+
+
+                        }
+                    });
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(UploadToFirebaseActivity.this,"Succesfully uploaded",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(UploadToFirebaseActivity.this,UserPageActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(UploadToFirebaseActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            });
+        }else{
+            Toast.makeText(UploadToFirebaseActivity.this,"no file selected",Toast.LENGTH_LONG).show();
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+
+    private String getFileExtension(Uri uriImage) {
+        ContentResolver cr= getContentResolver();
+        MimeTypeMap mime= MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(uriImage));
+    }
+
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -110,85 +158,66 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
-            mImageUri = data.getData();
-
-            Picasso.with(this).load(mImageUri).into(mImageView);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data!=null && data.getData()!=null){
+            uriImage= data.getData();
+            imageViewUploadPic.setImageURI(uriImage);
         }
 
-
     }
 
-    private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
+    @Override
+    public boolean onCreateOptionsMenu( Menu menu){
+        getMenuInflater().inflate(R.menu.common_menu,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
-    private void uploadFile() {
-        if (mImageUri != null) {
-            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id =item.getItemId();
+        if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(UploadToFirebaseActivity.this);
 
-            mUploadTask = fileReference.putFile(mImageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mProgressBar.setProgress(0);
-                                }
-                            }, 500);
+        }else if(id==R.id.menu_myProfile){
+            Intent intent = new Intent(UploadToFirebaseActivity.this, UserPageActivity.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
+        } else if( id==R.id.menu_updateProfile){
+            Intent intent = new Intent(UploadToFirebaseActivity.this, UpdateProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(UploadToFirebaseActivity.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
+        }else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(UploadToFirebaseActivity.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_updateEmail){
+            Intent intent = new Intent(UploadToFirebaseActivity.this, UpdateEmailActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_changePwd){
+            Intent intent = new Intent(UploadToFirebaseActivity.this, ChangePassworgActivity.class);
+            startActivity(intent);finish();
+        }else if( id==R.id.menu_deleteAcc){
+            Intent intent = new Intent(UploadToFirebaseActivity.this, DeleteAccountActivity.class);
+            startActivity(intent);finish();
+        }else if( id==R.id.menu_Logout){
+            authProfile.signOut();
+            Toast.makeText(UploadToFirebaseActivity.this, "Logged out",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(UploadToFirebaseActivity.this, LoggingInActivityMainScreen.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
 
-                            Toast.makeText(UploadToFirebaseActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
-                            Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
-                            while (!urlTask.isSuccessful());
-                            Uri downloadUrl = urlTask.getResult();
-
-                            //Log.d(TAG, "onSuccess: firebase download url: " + downloadUrl.toString()); //use if testing...don't need this line.
-                            UploadToFirebase uploadToFirebase = new UploadToFirebase(mEditTextFileName.getText().toString().trim(),downloadUrl.toString());
-
-                            String uploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadId).setValue(uploadToFirebase);
-
-                            /*
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),
-                                    taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-                            String uploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadId).setValue(upload);*/
-
-
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(UploadToFirebaseActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                            mProgressBar.setProgress((int) progress);
-                        }
-                    });
-        } else {
-            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(UploadToFirebaseActivity.this, "Something went wrong",Toast.LENGTH_LONG).show();
         }
-    }
-
-
-    private void openImagesActivity(){
-
-        Intent intent = new Intent(this, ViewUploadedImagesActivity.class);
-        startActivity(intent);
+        return super.onOptionsItemSelected(item);
     }
 }
-

@@ -32,7 +32,7 @@ private final static String TAG ="ForgotPasswordActivity";
         setContentView(R.layout.activity_forgot_password);
 
 
-        editTextPwdResetEmail=findViewById(R.id.editText_password_reset_email);
+        editTextPwdResetEmail=findViewById(R.id.edit_text_password_reset);
         buttonPwdReset=findViewById(R.id.button_password_reset);
         progressBar=findViewById(R.id.progressBar);
 

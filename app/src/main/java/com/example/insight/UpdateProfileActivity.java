@@ -9,7 +9,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Calendar;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -58,9 +56,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
         swipeToRefresh();
 
         progressBar = findViewById(R.id.progressBar);
-        editTextUpdateName=findViewById(R.id.editText_update_profile_name);
-        editTextUpdateMobile=findViewById(R.id.editText_update_profile_mobile);
-        editTextUpdatedob =findViewById(R.id.editText_update_profile_dob);
+        editTextUpdateName=findViewById(R.id.edit_text_update_profile_name);
+        editTextUpdateMobile=findViewById(R.id.edit_text_update_profile_phone);
+        editTextUpdatedob =findViewById(R.id.edit_text_update_profile_birthday);
 
         radioGroupUpdateGender =findViewById(R.id.radio_group_update_profile_gender);
 
@@ -70,21 +68,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
 
         //upload profile picture
-        TextView textViewUploadProfilePic= findViewById(R.id.textView_profile_upload_pic);
+        TextView textViewUploadProfilePic= findViewById(R.id.text_view_profile_update_picture);
         textViewUploadProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( UpdateProfileActivity.this, UploadProfilePicActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        TextView textViewupdateEmail= findViewById(R.id.textView_profile_update_email);
-        textViewupdateEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( UpdateProfileActivity.this, UpdateEmailActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -226,9 +214,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     editTextUpdateMobile.setText(textMobile);
 
                     if(textGender.equals("Male")){
-                        radioButtonUpdateGenderSelected = findViewById(R.id.radio_male);
+                        radioButtonUpdateGenderSelected = findViewById(R.id.radio_choice_male);
                     }else{
-                        radioButtonUpdateGenderSelected =findViewById(R.id.radio_female);
+                        radioButtonUpdateGenderSelected =findViewById(R.id.radio_choice_female);
                     }
                     radioButtonUpdateGenderSelected.setChecked(true);
                 }else{
@@ -283,6 +271,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
         }else if( id==R.id.menu_changePwd){
         Intent intent = new Intent(UpdateProfileActivity.this, ChangePassworgActivity.class);
         startActivity(intent);
+        }else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(UpdateProfileActivity.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(UpdateProfileActivity.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
         }else if( id==R.id.menu_deleteAcc){
        Intent intent = new Intent(UpdateProfileActivity.this, DeleteAccountActivity.class);
         startActivity(intent);

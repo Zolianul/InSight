@@ -181,7 +181,7 @@
                         android:text="New Password" />
 
                     <View
-                        android:id="@+id/divider_pwd"
+                        android:id="@+id/divider"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
                         android:layout_below="@id/text_view_change_new_pwd"

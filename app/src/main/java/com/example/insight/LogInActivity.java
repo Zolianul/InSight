@@ -41,14 +41,14 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
 
-        editTextEmail=findViewById(R.id.editText_login_email);
-        editTextPwd=findViewById(R.id.editText_login_pwd);
+        editTextEmail=findViewById(R.id.edit_text_login_email);
+        editTextPwd=findViewById(R.id.edit_text_login_pwd);
         progressBar=findViewById(R.id.progressBar);
 
 
         authProfile=FirebaseAuth.getInstance();
 
-        TextView textViewForgotPwd = findViewById(R.id.textView_forgot_password_link);
+        TextView textViewForgotPwd = findViewById(R.id.text_view_forgot_password_link);
         textViewForgotPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        TextView textViewRegister=findViewById((R.id.textView_register_link));
+        TextView textViewRegister=findViewById((R.id.text_view_register_link));
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +68,7 @@ public class LogInActivity extends AppCompatActivity {
 
 
         //hide password
-        ImageView imageviewShowHidePwd = findViewById(R.id.imageView_show_hide_pwd);
+        ImageView imageviewShowHidePwd = findViewById(R.id.image_show_hide_pwd);
         imageviewShowHidePwd.setImageResource(R.drawable.hide_pwd);
         imageviewShowHidePwd.setOnClickListener(new View.OnClickListener(){
             @Override

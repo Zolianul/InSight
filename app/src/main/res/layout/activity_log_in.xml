@@ -23,7 +23,7 @@
                 android:background="@color/purple_700">
 
                 <TextView
-                    android:id="@+id/textView_login_head"
+                    android:id="@+id/text_view_login_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -33,7 +33,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                 <TextView
-                    android:id="@+id/textView_login_instruction"
+                    android:id="@+id/text_view_login_msg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -63,35 +63,35 @@
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:id="@+id/imageViewEmail"
+                        android:id="@+id/image_email"
                         android:src="@drawable/email_img"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"/>
 
                     <TextView
-                        android:id="@+id/textView_login_email"
+                        android:id="@+id/text_view_login_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="6dp"
                         android:text="Email"
-                        android:layout_toEndOf="@id/imageViewEmail"/>
+                        android:layout_toEndOf="@id/image_email"/>
 
                     <View
                         android:layout_width="250dp"
                         android:layout_height="1dp"
                         android:id="@+id/divider_email"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/textView_login_email"
+                        android:layout_below="@id/text_view_login_email"
                         android:background="@android:color/darker_gray"/>
 
                     <EditText
-                        android:id="@+id/editText_login_email"
+                        android:id="@+id/edit_text_login_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_login_email"
+                        android:layout_below="@id/text_view_login_email"
                         android:background="@android:color/transparent"
-                        android:layout_toEndOf="@id/imageViewEmail"
+                        android:layout_toEndOf="@id/image_email"
                         android:hint="Enter your email"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
@@ -112,34 +112,34 @@
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:id="@+id/imageViewPwd"
+                        android:id="@+id/imagePwd"
                         android:src="@drawable/pwd_img"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"/>
 
                     <TextView
-                        android:id="@+id/textView_login_pwd"
+                        android:id="@+id/text_view_login_pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/imageViewPwd"
+                        android:layout_toEndOf="@id/imagePwd"
                         android:padding="6dp"
                         android:text="Password" />
 
                     <View
                         android:layout_width="250dp"
                         android:layout_height="1dp"
-                        android:id="@+id/divider_pwd"
+                        android:id="@+id/divider"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/textView_login_pwd"
+                        android:layout_below="@id/text_view_login_pwd"
                         android:background="@android:color/darker_gray"/>
 
                     <EditText
-                        android:id="@+id/editText_login_pwd"
+                        android:id="@+id/edit_text_login_pwd"
                         android:layout_width="260dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_login_pwd"
-                        android:layout_toEndOf="@id/imageViewPwd"
+                        android:layout_below="@id/text_view_login_pwd"
+                        android:layout_toEndOf="@id/imagePwd"
                         android:background="@android:color/transparent"
                         android:hint="Enter your password"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -150,13 +150,13 @@
                         android:textSize="16sp" />
 
                     <ImageView
-                        android:id="@+id/imageView_show_hide_pwd"
+                        android:id="@+id/image_show_hide_pwd"
                         android:layout_width="33dp"
                         android:layout_height="33dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_below="@id/textView_login_pwd" />
+                        android:layout_below="@id/text_view_login_pwd" />
 
                 </RelativeLayout>
 
@@ -178,7 +178,7 @@
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/textView_register"
+                        android:id="@+id/text_view_register_new_acct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -186,7 +186,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/textView_register_link"
+                        android:id="@+id/text_view_register_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/register"
@@ -204,7 +204,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView_forgot_password"
+                        android:id="@+id/text_view_forgot_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -212,7 +212,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/textView_forgot_password_link"
+                        android:id="@+id/text_view_forgot_password_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/click_here_to_reset"

@@ -50,9 +50,9 @@ public class UpdateEmailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
         progressBar=findViewById(R.id.progressBar);
-        editTextPwd=findViewById(R.id.editText_update_email_verify_password);
-        editTextNewEmail= findViewById(R.id.editText_update_email_new);
-        textViewAuthenticated=findViewById(R.id.textView_update_email_authenticated);
+        editTextPwd=findViewById(R.id.edit_text_update_email_pwd);
+        editTextNewEmail= findViewById(R.id.edit_text_update_email_new_email);
+        textViewAuthenticated=findViewById(R.id.text_view_update_email_authenticated_user_msg);
         buttonUpdateEmail=findViewById(R.id.button_update_email);
 
         buttonUpdateEmail.setEnabled(false);
@@ -62,7 +62,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
         firebaseUser=authProfile.getCurrentUser();
 
         userOldEmail=firebaseUser.getEmail();
-        TextView textviewOldEmail = findViewById(R.id.textView_update_email_old);
+        TextView textviewOldEmail = findViewById(R.id.text_view_update_email_old_email);
         textviewOldEmail.setText(userOldEmail);
 
         if (firebaseUser.equals("")){
@@ -228,6 +228,15 @@ public class UpdateEmailActivity extends AppCompatActivity {
             Intent intent = new Intent(UpdateEmailActivity.this, UpdateProfileActivity.class);
             startActivity(intent);
             finish();
+        }else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(UpdateEmailActivity.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(UpdateEmailActivity.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
         }else if( id==R.id.menu_updateEmail){
             Intent intent = new Intent(UpdateEmailActivity.this, UpdateEmailActivity.class);
             startActivity(intent);

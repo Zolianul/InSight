@@ -16,7 +16,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -59,12 +58,12 @@ public class RegisteringActivity extends AppCompatActivity {
         //getSupportActionBar().setTitle("Register");
         Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
         progressBar = findViewById(R.id.progressBar);
-        editTestRegisterFullName= findViewById(R.id.editText_register_full_name);
-        editTestRegisterEmail=findViewById(R.id.editText_register_email);
-        editTestRegisterDoB=findViewById(R.id.editText_register_dob);
-        editTestRegisterMobile=findViewById(R.id.editText_register_mobile);
-        editTestRegisterPwd=findViewById(R.id.editText_register_password);
-        editTestRegisterConfirmPwd=findViewById(R.id.editText_register_confirm_password);
+        editTestRegisterFullName= findViewById(R.id.edit_text_register_full_name);
+        editTestRegisterEmail=findViewById(R.id.edit_text_register_email);
+        editTestRegisterDoB=findViewById(R.id.edit_text_register_birthday);
+        editTestRegisterMobile=findViewById(R.id.edit_text_register_phone);
+        editTestRegisterPwd=findViewById(R.id.edit_text_register_password);
+        editTestRegisterConfirmPwd=findViewById(R.id.edit_text_register_password_confirm);
         radioGroupRegisterGender=findViewById(R.id.radio_group_register_gender);
         radioGroupRegisterGender.clearCheck();
 

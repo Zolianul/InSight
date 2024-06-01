@@ -10,6 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +30,9 @@ public class ViewUploadedImagesActivity extends AppCompatActivity implements Ima
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
     private ValueEventListener mDBListner;
+    private FirebaseUser firebaseUser;
+    private StorageReference storageReference;
+    private FirebaseAuth authProfile;
     private List<UploadToFirebase> mUploadToFirebases;
 
     @Override
@@ -50,7 +55,13 @@ public class ViewUploadedImagesActivity extends AppCompatActivity implements Ima
         mAdapter.setOnItemClicListener(ViewUploadedImagesActivity.this);
 
         mStorage=FirebaseStorage.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("home/raspberry_user/pi");
+
+
+        firebaseUser =authProfile.getCurrentUser();
+        storageReference= FirebaseStorage.getInstance().getReference("UserUploads");
+
+
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("UserUploads");
 
         mDBListner=mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override

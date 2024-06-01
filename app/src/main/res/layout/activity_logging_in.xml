@@ -18,18 +18,18 @@
         android:padding="15dp">
 
         <ImageView
-            android:id="@+id/imageView_logo"
+            android:id="@+id/image_view_logo_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/textView_app_name"
+            android:layout_below="@id/text_view_app_name"
             android:layout_marginTop="30dp"
             android:adjustViewBounds="true"
             android:maxWidth="180dp"
             app:srcCompat="@drawable/app_logo" />
 
         <TextView
-            android:id="@+id/textView_app_name"
+            android:id="@+id/text_view_app_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="InSight"
@@ -37,10 +37,10 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
-            android:id="@+id/textView_main_head"
+            android:id="@+id/text_view_welcome_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageView_logo"
+            android:layout_below="@id/image_view_logo_app"
             android:layout_marginTop="20dp"
             android:text="Welcome to InSight\nPlease LogIn or Register to continue"
             android:textAlignment="center"
@@ -50,7 +50,7 @@
             android:id="@+id/button_login"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView_main_head"
+            android:layout_below="@id/text_view_welcome_msg"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="170dp"
             android:background="@color/purple_700"
@@ -58,7 +58,7 @@
 
 
         <TextView
-            android:id="@+id/textView_register"
+            android:id="@+id/text_view_register_new_acct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/button_login"
@@ -67,10 +67,10 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textView_register_link"
+            android:id="@+id/text_view_register_link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView_register"
+            android:layout_below="@id/text_view_register_new_acct"
             android:text="@string/register"
             android:textColor="@color/purple_700"
             android:textAlignment="center" />

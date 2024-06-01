@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
 public class LoggingInActivityMainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +29,7 @@ public class LoggingInActivityMainScreen extends AppCompatActivity {
 
         //open register activity
 
-        TextView textViewRegister=findViewById((R.id.textView_register_link));
+        TextView textViewRegister=findViewById((R.id.text_view_register_link));
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

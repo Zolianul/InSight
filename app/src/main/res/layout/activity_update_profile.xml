@@ -24,7 +24,7 @@
                 android:background="@color/purple_700">
 
                 <TextView
-                    android:id="@+id/textView_update_profile_head"
+                    android:id="@+id/text_view_update_profile_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -34,7 +34,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                 <TextView
-                    android:id="@+id/textView_update_profile_instruction"
+                    android:id="@+id/text_view_update_profile_msg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
@@ -62,7 +62,7 @@
                     android:background="@drawable/border">
 
                     <ImageView
-                        android:id="@+id/imageViewName"
+                        android:id="@+id/image_name"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerVertical="true"
@@ -71,10 +71,10 @@
                         android:src="@drawable/profile_img" />
 
                     <TextView
-                        android:id="@+id/textView_update_profile_name"
+                        android:id="@+id/text_view_update_profile_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/imageViewName"
+                        android:layout_toEndOf="@id/image_name"
                         android:padding="6dp"
                         android:text="Name" />
 
@@ -82,27 +82,28 @@
                         android:id="@+id/divider_name"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
-                        android:layout_below="@id/textView_update_profile_name"
+                        android:layout_below="@id/text_view_update_profile_name"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/darker_gray" />
 
                     <EditText
-                        android:id="@+id/editText_update_profile_name"
+                        android:id="@+id/edit_text_update_profile_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_update_profile_name"
+                        android:layout_below="@id/text_view_update_profile_name"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/imageViewName"
+                        android:layout_toEndOf="@id/image_name"
                         android:background="@android:color/transparent"
                         android:inputType="textPersonName"
+                        android:hint="Enter your name"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/RL_dob"
+                    android:id="@+id/RL_birthday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_name"
@@ -110,7 +111,7 @@
                     android:background="@drawable/border">
 
                     <ImageView
-                        android:id="@+id/imageViewDoB"
+                        android:id="@+id/image_view_birthday"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerVertical="true"
@@ -119,10 +120,10 @@
                         android:src="@drawable/birthday_img" />
 
                     <TextView
-                        android:id="@+id/textView_update_profile_dob"
+                        android:id="@+id/text_view_update_profile_birthday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/imageViewDoB"
+                        android:layout_toEndOf="@id/image_view_birthday"
                         android:padding="6dp"
                         android:text="Date of Birth (dd/mm/yyyy)" />
 
@@ -130,31 +131,33 @@
                         android:id="@+id/divider_dob"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
-                        android:layout_below="@id/textView_update_profile_dob"
+                        android:layout_below="@id/text_view_update_profile_birthday"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/darker_gray" />
 
                     <EditText
-                        android:id="@+id/editText_update_profile_dob"
-                        android:layout_width="150dp"
+                        android:id="@+id/edit_text_update_profile_birthday"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_update_profile_dob"
+                        android:layout_below="@id/text_view_update_profile_birthday"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/imageViewDoB"
+                        android:layout_toEndOf="@id/image_view_birthday"
                         android:background="@android:color/transparent"
                         android:inputType="date"
                         android:padding="6dp"
+                        android:hint="Please choose your bithday"
                         android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
 
                     <ImageView
-                        android:id="@+id/imageView_date_picker"
+                        android:id="@+id/image_view_date_picker"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_below="@id/textView_update_profile_dob"
+                        android:layout_below="@id/text_view_update_profile_birthday"
                         android:layout_marginTop="10dp"
-                        android:layout_toEndOf="@id/editText_update_profile_dob"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toEndOf="@id/edit_text_update_profile_birthday"
                         android:src="@drawable/calendar_img" />
                 </RelativeLayout>
 
@@ -162,12 +165,12 @@
                     android:id="@+id/RL_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/RL_dob"
+                    android:layout_below="@id/RL_birthday"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/border">
 
                     <ImageView
-                        android:id="@+id/imageViewGender"
+                        android:id="@+id/image_view_gender"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerVertical="true"
@@ -176,10 +179,10 @@
                         android:src="@drawable/gender_img" />
 
                     <TextView
-                        android:id="@+id/textView_update_profile_gender"
+                        android:id="@+id/text_view_update_profile_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/imageViewGender"
+                        android:layout_toEndOf="@id/image_view_gender"
                         android:padding="6dp"
                         android:text="Gender" />
 
@@ -187,7 +190,7 @@
                         android:id="@+id/divider_gender"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
-                        android:layout_below="@id/textView_update_profile_gender"
+                        android:layout_below="@id/text_view_update_profile_gender"
                         android:layout_centerHorizontal="true"
                         android:background="@android:color/darker_gray" />
 
@@ -195,13 +198,13 @@
                         android:id="@+id/radio_group_update_profile_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_update_profile_gender"
-                        android:layout_toEndOf="@id/imageViewGender"
+                        android:layout_below="@id/text_view_update_profile_gender"
+                        android:layout_toEndOf="@id/image_view_gender"
                         android:contentDescription=""
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/radio_female"
+                            android:id="@+id/radio_choice_female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/purple_500"
@@ -210,7 +213,7 @@
                             android:textSize="16sp" />
 
                         <RadioButton
-                            android:id="@+id/radio_male"
+                            android:id="@+id/radio_choice_male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/purple_500"
@@ -222,7 +225,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/RL_mobile"
+                    android:id="@+id/RL_phone_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_gender"
@@ -230,7 +233,7 @@
                     android:background="@drawable/border">
 
                     <ImageView
-                        android:id="@+id/imageViewMobile"
+                        android:id="@+id/image_phone"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerVertical="true"
@@ -242,12 +245,12 @@
                         android:id="@+id/textView_update_profile_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/imageViewMobile"
+                        android:layout_toEndOf="@id/image_phone"
                         android:padding="6dp"
                         android:text="Phone number" />
 
                     <View
-                        android:id="@+id/divider_mobile"
+                        android:id="@+id/divider_phone"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
                         android:layout_below="@id/textView_update_profile_mobile"
@@ -255,16 +258,17 @@
                         android:background="@android:color/darker_gray" />
 
                     <EditText
-                        android:id="@+id/editText_update_profile_mobile"
+                        android:id="@+id/edit_text_update_profile_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/textView_update_profile_mobile"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/imageViewMobile"
+                        android:layout_toEndOf="@id/image_phone"
                         android:background="@android:color/transparent"
                         android:inputType="phone"
                         android:padding="6dp"
+                        android:hint="Enter your phone number"
                         android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
                 </RelativeLayout>
@@ -273,14 +277,14 @@
                     android:id="@+id/button_update_profile"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/RL_mobile"
+                    android:layout_below="@id/RL_phone_no"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:text="Update Profile"
                     android:textAlignment="center" />
 
                 <TextView
-                    android:id="@+id/textView_profile_upload_pic"
+                    android:id="@+id/text_view_profile_update_picture"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/button_update_profile"
@@ -290,15 +294,6 @@
                     android:textColor="@color/purple_700"
                     android:text="@string/upload_pic_u" />
 
-                <TextView
-                    android:id="@+id/textView_profile_update_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/button_update_profile"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="50dp"
-                    android:textColor="@color/purple_700"
-                    android:text="@string/update_email_u" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"

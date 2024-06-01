@@ -53,9 +53,9 @@ public class DeleteAccountActivity extends AppCompatActivity {
 
         progressBar=findViewById(R.id.progressBar);
         editTextUserPwd = findViewById(R.id.edit_text_delete_user_pwd);
-        textViewUserAuthenticated = findViewById(R.id.textView_delete_user_authenticated);
+        textViewUserAuthenticated = findViewById(R.id.text_view_delete_authenticated_user);
         buttonDeleteUser = findViewById(R.id.button_delete_user);
-        buttonReAuthenticate=findViewById(R.id.button_delete_user_authenticate);
+        buttonReAuthenticate=findViewById(R.id.button_delete_authenticated_user);
 
         buttonDeleteUser.setEnabled(false);
 
@@ -244,6 +244,15 @@ alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             Intent intent = new Intent(DeleteAccountActivity.this, UpdateProfileActivity.class);
             startActivity(intent);
             finish();
+        }else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(DeleteAccountActivity.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(DeleteAccountActivity.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
         }else if( id==R.id.menu_updateEmail){
             Intent intent = new Intent(DeleteAccountActivity.this, UpdateEmailActivity.class);
             startActivity(intent);finish();

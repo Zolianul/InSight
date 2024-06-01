@@ -67,7 +67,7 @@
                     android:background="@drawable/border">
 
                     <ImageView
-                        android:id="@+id/imageViewPwd"
+                        android:id="@+id/imagePwd"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerVertical="true"
@@ -79,12 +79,12 @@
                         android:id="@+id/text_view_delete_user_pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/imageViewPwd"
+                        android:layout_toEndOf="@id/imagePwd"
                         android:padding="6dp"
                         android:text="Password" />
 
                     <View
-                        android:id="@+id/divider_pwd"
+                        android:id="@+id/divider"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
                         android:layout_below="@id/text_view_delete_user_pwd"
@@ -98,7 +98,7 @@
                         android:layout_below="@id/text_view_delete_user_pwd"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/imageViewPwd"
+                        android:layout_toEndOf="@id/imagePwd"
                         android:background="@android:color/transparent"
                         android:hint="Enter your password"
                         android:inputType="textPassword"
@@ -107,7 +107,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
-                        android:id="@+id/imageView_show_hide_pwd"
+                        android:id="@+id/image_show_hide_pwd"
                         android:layout_width="33dp"
                         android:layout_height="33dp"
                         android:layout_below="@id/text_view_delete_user_pwd"
@@ -117,7 +117,7 @@
                 </RelativeLayout>
 
                 <Button
-                    android:id="@+id/button_delete_user_authenticate"
+                    android:id="@+id/button_delete_authenticated_user"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_pwd"
@@ -145,7 +145,7 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/textView_delete_user_authenticated"
+                    android:id="@+id/text_view_delete_authenticated_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -159,7 +159,7 @@
                     android:id="@+id/button_delete_user"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textView_delete_user_authenticated"
+                    android:layout_below="@id/text_view_delete_authenticated_user"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:text="Delete Profile" />

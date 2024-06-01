@@ -195,7 +195,16 @@ public class ChangePassworgActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
             //overridePendingTransition(0,0);
-        } else if( id==R.id.menu_updateProfile){
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(ChangePassworgActivity.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
+        } else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(ChangePassworgActivity.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_updateProfile){
             Intent intent = new Intent(ChangePassworgActivity.this, UpdateProfileActivity.class);
             startActivity(intent);
             finish();

@@ -51,10 +51,10 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
-        Button buttonUploadPicChoose = findViewById(R.id.upload_pic_choose_button);
+        Button buttonUploadPicChoose = findViewById(R.id.button_choose_picture);
         Button buttonUploadPic=findViewById(R.id.upload_pic_button);
         progressBar=findViewById(R.id.progressBar);
-        imageViewUploadPic=findViewById(R.id.imageView_profile_dp);
+        imageViewUploadPic=findViewById(R.id.image_view_profile_pic);
 
         authProfile = FirebaseAuth.getInstance();
         firebaseUser =authProfile.getCurrentUser();
@@ -178,6 +178,15 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         Intent intent = new Intent(UploadProfilePicActivity.this, UpdateProfileActivity.class);
         startActivity(intent);
         finish();
+        }else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(UploadProfilePicActivity.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(UploadProfilePicActivity.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
         }else if( id==R.id.menu_updateEmail){
         Intent intent = new Intent(UploadProfilePicActivity.this, UpdateEmailActivity.class);
         startActivity(intent);
