@@ -1,3 +1,4 @@
+/*
 package com.example.insight;
 public class UploadToFirebase {
     private String mName;
@@ -42,4 +43,4 @@ public class UploadToFirebase {
         mKey= key;
     }
 
-}
+}*/

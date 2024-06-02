@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-public class ViewUploadedImagesActivity extends AppCompatActivity {
+public class ViewUploadedImagesUnknownPersons extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private FirebaseAuth authProfile;
     private RecyclerView recyclerView;
@@ -40,9 +40,9 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_uploaded_images);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Uploads");
-        FirebaseApp.initializeApp(this);
 
+        FirebaseApp.initializeApp(this);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Unknown Persons");
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -57,7 +57,7 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(ListResult listResult) {
                     arrayList = new ArrayList<>();
-                    adapter = new ImageAdapter(ViewUploadedImagesActivity.this, arrayList);
+                    adapter = new ImageAdapter(ViewUploadedImagesUnknownPersons.this, arrayList);
                     adapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
                         @Override
                         public void onClick(Image image) {
@@ -86,7 +86,7 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
                                         arrayList.add(image);
                                         adapter.notifyDataSetChanged();
                                     } else {
-                                        Toast.makeText(ViewUploadedImagesActivity.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ViewUploadedImagesUnknownPersons.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -98,7 +98,7 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     progressCircle.setVisibility(View.INVISIBLE);
-                    Toast.makeText(ViewUploadedImagesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewUploadedImagesUnknownPersons.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
@@ -126,14 +126,14 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(ViewUploadedImagesActivity.this, "Image deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewUploadedImagesUnknownPersons.this, "Image deleted", Toast.LENGTH_SHORT).show();
                 arrayList.remove(image);
                 adapter.notifyDataSetChanged();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(ViewUploadedImagesActivity.this, "Failed to delete image", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewUploadedImagesUnknownPersons.this, "Failed to delete image", Toast.LENGTH_SHORT).show();
             }
         });
     }

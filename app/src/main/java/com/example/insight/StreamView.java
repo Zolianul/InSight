@@ -28,7 +28,7 @@ public class StreamView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stream_view);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Change Password");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Live Stream");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         authProfile= FirebaseAuth.getInstance();
         FirebaseUser  firebaseUser= authProfile.getCurrentUser();

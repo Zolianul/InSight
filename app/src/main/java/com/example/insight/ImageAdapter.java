@@ -1,10 +1,7 @@
 package com.example.insight;
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,114 +10,67 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
-    private Context mContext;
-    private List<UploadToFirebase> mUploadToFirebases;
-    private OnItemClickListener mListner;
+public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
+    Context context;
+    ArrayList<Image> arrayList;
+    OnItemClickListener onItemClickListener;
+    OnItemLongClickListener onItemLongClickListener;
 
-    public ImageAdapter(Context context, List<UploadToFirebase> uploadToFirebases) {
-        mContext = context;
-        mUploadToFirebases = uploadToFirebases;
+    public ImageAdapter(Context context, ArrayList<Image> arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.image_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.image_item, parent, false);
-        return new ImageViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        UploadToFirebase uploadToFirebaseCurrent = mUploadToFirebases.get(position);
-        holder.textViewName.setText(uploadToFirebaseCurrent.getName());
-        Picasso.with(mContext)
-                .load(uploadToFirebaseCurrent.getImageUrl())
-                .fit()
-                .centerCrop()
-                .into(holder.imageView);
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.title.setText(arrayList.get(position).getName());
+        Glide.with(context).load(arrayList.get(position).getUrl()).into(holder.imageView);
+        holder.itemView.setOnClickListener(view -> onItemClickListener.onClick(arrayList.get(position)));
+        holder.itemView.setOnLongClickListener(view -> {
+            onItemLongClickListener.onLongClick(arrayList.get(position));
+            return true;
+        });
     }
 
     @Override
     public int getItemCount() {
-        return mUploadToFirebases.size();
+        return arrayList.size();
     }
 
-    public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
-            View.OnCreateContextMenuListener , MenuItem.OnMenuItemClickListener {
-        public TextView textViewName;
-        public ImageView imageView;
-
-        public ImageViewHolder(@NonNull View itemView) {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
+        TextView title;
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.text_view_img_name);
-            imageView = itemView.findViewById(R.id.image_view_uploaded_img);
-            itemView.setOnClickListener(this);
-
-            itemView.setOnCreateContextMenuListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            if(mListner!=null){
-                int position =getAdapterPosition();
-                if(position!= RecyclerView.NO_POSITION){
-                    mListner.onItemClick(position);
-
-                }
-            }
-        }
-
-        @Override
-        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("This is a permanent deletion of the file");
-            //MenuItem doWhatever= menu.add(Menu.NONE,1,1,"Do whatever");
-            MenuItem delete=menu.add(Menu.NONE,2,2,"Delete");
-
-            //doWhatever.setOnMenuItemClickListener(this);
-            delete.setOnMenuItemClickListener(this);
-        }
-
-        @Override
-        public boolean onMenuItemClick(@NonNull MenuItem item) {
-
-            if(mListner!=null){
-                int position =getAdapterPosition();
-                if(position!= RecyclerView.NO_POSITION){
-                    switch (item.getItemId()){
-                        case 1:
-                            mListner.onWhatEverClick(position);
-                            return true;
-                        case 2:
-                            mListner.onDeleteClick(position);
-                            return true;
-
-                    }
-
-                }
-            }
-
-            return false;
+            title = itemView.findViewById(R.id.list_item_title);
+            imageView = itemView.findViewById(R.id.list_item_image);
         }
     }
 
-
-    public interface OnItemClickListener{
-        void onItemClick(int position);
-
-        void onWhatEverClick(int position);
-        void onDeleteClick(int position);
-
-        void OnDestroy();
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
-    public void setOnItemClicListener(OnItemClickListener listner){
-        mListner= listner;
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
 
+    public interface OnItemClickListener {
+        void onClick(Image image);
+    }
+
+    public interface OnItemLongClickListener {
+        void onLongClick(Image image);
     }
 }
-

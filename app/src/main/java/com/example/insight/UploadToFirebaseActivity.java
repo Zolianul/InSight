@@ -44,7 +44,7 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private EditText editText_img_name;
     private SwipeRefreshLayout swipeContainer;
-    //private TextView mTextViewShowUploads;
+    private TextView mTextViewShowUploads,mTextViewShowUnknowns;
     private static final int PICK_IMAGE_REQUEST =1;
     private Uri uriImage;
 
@@ -63,16 +63,17 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         imageViewUploadPic=findViewById(R.id.image_view_img_to_upload);
         editText_img_name=findViewById(R.id.edit_text_file_name);
-        //mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
+        mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
+        mTextViewShowUnknowns = findViewById(R.id.text_view_show_unknowns);
         authProfile = FirebaseAuth.getInstance();
         firebaseUser =authProfile.getCurrentUser();
         storageReference= FirebaseStorage.getInstance().getReference("UserUploads");
         //databaseReference= FirebaseDatabase.getInstance().getReference("home/raspberry_user/pi");
-        Uri uri= firebaseUser.getPhotoUrl();
+        //Uri uri= firebaseUser.getPhotoUrl();
 
 
 
-        Picasso.with(UploadToFirebaseActivity.this).load(uri).into(imageViewUploadPic);
+        //Picasso.with(UploadToFirebaseActivity.this).load(uri).into(imageViewUploadPic);
 
         buttonUploadPicChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,14 +81,21 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
                 openFileChooser();
             }
         });
-/*
+
         mTextViewShowUploads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UploadToFirebaseActivity.this, ViewUploadedImagesActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
+        mTextViewShowUnknowns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UploadToFirebaseActivity.this, ViewUploadedImagesUnknownPersons.class);
+                startActivity(intent);
+            }
+        });
 
 
         buttonUploadPic.setOnClickListener(new View.OnClickListener() {
@@ -131,9 +139,9 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
                     });
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(UploadToFirebaseActivity.this,"Succesfully uploaded",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(UploadToFirebaseActivity.this,UserPageActivity.class);
-                    startActivity(intent);
-                    finish();
+                    //Intent intent = new Intent(UploadToFirebaseActivity.this,UserPageActivity.class);
+                    //startActivity(intent);
+                    //finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

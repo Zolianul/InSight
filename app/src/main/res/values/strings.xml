@@ -23,4 +23,5 @@
     <string name="gender">Gender</string>
     <string name="phone">Phone number</string>
     <string name="registered_user_since">Member since</string>
+    <string name="view_camera_photos">View Camera photos</string>
 </resources>
