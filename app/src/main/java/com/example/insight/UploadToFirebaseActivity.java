@@ -122,7 +122,7 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
 
     private void UploadPic() {
         if(uriImage!=null){
-            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"/usr_upload."+editText_img_name.getText().toString()+System.currentTimeMillis()+getFileExtension(uriImage));
+            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"/ProfilesUploaded/"+editText_img_name.getText().toString()+getFileExtension(uriImage));
             //ulpoad to storage
 
             fileReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
