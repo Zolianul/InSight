@@ -3,7 +3,6 @@ package com.example.insight;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
@@ -266,7 +265,7 @@ alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             Intent intent = new Intent(DeleteAccountActivity.this, UpdateEmailActivity.class);
             startActivity(intent);finish();
         }else if( id==R.id.menu_changePwd){
-            Intent intent = new Intent(DeleteAccountActivity.this, ChangePassworgActivity.class);
+            Intent intent = new Intent(DeleteAccountActivity.this, ChangePasswordActivity.class);
             startActivity(intent);finish();
         }else if( id==R.id.menu_deleteAcc){
             Intent intent = new Intent(DeleteAccountActivity.this, DeleteAccountActivity.class);

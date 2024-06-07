@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -197,7 +195,7 @@ public class UserPageActivity extends AppCompatActivity {
         startActivity(intent);
         //finish();
     }else if( id==R.id.menu_changePwd){
-        Intent intent = new Intent(UserPageActivity.this, ChangePassworgActivity.class);
+        Intent intent = new Intent(UserPageActivity.this, ChangePasswordActivity.class);
         startActivity(intent);//finish();
     }else if( id==R.id.menu_deleteAcc){
         Intent intent = new Intent(UserPageActivity.this, DeleteAccountActivity.class);

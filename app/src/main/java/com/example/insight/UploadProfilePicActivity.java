@@ -3,7 +3,6 @@ package com.example.insight;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.ContentResolver;
@@ -192,7 +191,7 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
         }else if( id==R.id.menu_changePwd){
-        Intent intent = new Intent(UploadProfilePicActivity.this, ChangePassworgActivity.class);
+        Intent intent = new Intent(UploadProfilePicActivity.this, ChangePasswordActivity.class);
         startActivity(intent);finish();
         }else if( id==R.id.menu_deleteAcc){
        Intent intent = new Intent(UploadProfilePicActivity.this, DeleteAccountActivity.class);

@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -73,7 +72,7 @@ public class StreamView extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_changePwd){
-            Intent intent = new Intent(StreamView.this, ChangePassworgActivity.class);
+            Intent intent = new Intent(StreamView.this, ChangePasswordActivity.class);
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_deleteAcc){

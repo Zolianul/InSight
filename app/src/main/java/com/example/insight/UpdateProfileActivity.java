@@ -2,7 +2,6 @@ package com.example.insight;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.DatePickerDialog;
@@ -269,7 +268,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(UpdateProfileActivity.this, UpdateEmailActivity.class);
         startActivity(intent);finish();
         }else if( id==R.id.menu_changePwd){
-        Intent intent = new Intent(UpdateProfileActivity.this, ChangePassworgActivity.class);
+        Intent intent = new Intent(UpdateProfileActivity.this, ChangePasswordActivity.class);
         startActivity(intent);
         }else if(id==R.id.menu_uploadImg){
             Intent intent = new Intent(UpdateProfileActivity.this, UploadToFirebaseActivity.class);

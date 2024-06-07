@@ -2,7 +2,6 @@ package com.example.insight;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
@@ -27,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
-public class ChangePassworgActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
 
@@ -63,8 +62,8 @@ public class ChangePassworgActivity extends AppCompatActivity {
         FirebaseUser firebaseUser=authProfile.getCurrentUser();
 
         if(firebaseUser.equals("")){
-            Toast.makeText(ChangePassworgActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(ChangePassworgActivity.this, UserPageActivity.class);
+            Toast.makeText(ChangePasswordActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ChangePasswordActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();
         }else {
@@ -84,7 +83,7 @@ public class ChangePassworgActivity extends AppCompatActivity {
                 userPwdCurr= editTextChangeCurrentPwd.getText().toString();
 
                 if(TextUtils.isEmpty(userPwdCurr)){
-                    Toast.makeText(ChangePassworgActivity.this,"Password is required",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ChangePasswordActivity.this,"Password is required",Toast.LENGTH_LONG).show();
                     editTextChangeCurrentPwd.setError("Please enter your password");
                     editTextChangeCurrentPwd.requestFocus();
                 }else{
@@ -105,10 +104,10 @@ public class ChangePassworgActivity extends AppCompatActivity {
                                 buttonChangePwd.setEnabled(true);
 
                                 textViewAuthenticatedMessage.setText("You are now authenticated"+"You can change your password now");
-                                Toast.makeText(ChangePassworgActivity.this,"You can now change your password",Toast.LENGTH_LONG).show();
+                                Toast.makeText(ChangePasswordActivity.this,"You can now change your password",Toast.LENGTH_LONG).show();
 
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                    buttonChangePwd.setBackgroundTintList(ContextCompat.getColorStateList(ChangePassworgActivity.this,R.color.dark_green));
+                                    buttonChangePwd.setBackgroundTintList(ContextCompat.getColorStateList(ChangePasswordActivity.this,R.color.dark_green));
                                 }
 
                                 buttonChangePwd.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +121,7 @@ public class ChangePassworgActivity extends AppCompatActivity {
                                 try {
                                     throw task.getException();
                                 }catch (Exception e){
-                                    Toast.makeText(ChangePassworgActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ChangePasswordActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
 
                                 }
                             }
@@ -141,20 +140,20 @@ public class ChangePassworgActivity extends AppCompatActivity {
         String userPwdConfirmNew = editTextConfirmNewPwd.getText().toString();
 
         if(TextUtils.isEmpty(userPwdNew)){
-            Toast.makeText(ChangePassworgActivity.this,"Password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
             editTextChangePwdNew.setError("Please enter your new password");
             editTextChangePwdNew.requestFocus();
         }else if(TextUtils.isEmpty(userPwdConfirmNew)){
-            Toast.makeText(ChangePassworgActivity.this,"Password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
             editTextConfirmNewPwd.setError("Please enter your new password");
             editTextConfirmNewPwd.requestFocus();
         } else if (!userPwdNew.matches(userPwdConfirmNew)) {
-            Toast.makeText(ChangePassworgActivity.this,"Password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
             editTextConfirmNewPwd.setError("Please enter same new password");
             editTextConfirmNewPwd.requestFocus();
 
         }else if (userPwdNew.matches(userPwdCurr)) {
-            Toast.makeText(ChangePassworgActivity.this,"Password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
             editTextChangePwdNew.setError("Please enter a different password");
             editTextChangePwdNew.requestFocus();
 
@@ -165,15 +164,15 @@ public class ChangePassworgActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(ChangePassworgActivity.this,"Password changed",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ChangePassworgActivity.this, UserPageActivity.class);
+                        Toast.makeText(ChangePasswordActivity.this,"Password changed",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ChangePasswordActivity.this, UserPageActivity.class);
                         startActivity(intent);
                         finish();
                     }else{
                         try {
                             throw task.getException();
                         }catch (Exception e){
-                            Toast.makeText(ChangePassworgActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(ChangePasswordActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
 
                         }
                     }
@@ -198,44 +197,44 @@ public class ChangePassworgActivity extends AppCompatActivity {
             NavUtils.navigateUpFromSameTask(ChangePassworgActivity.this);
 
         }else */if(id==R.id.menu_myProfile){
-            Intent intent = new Intent(ChangePassworgActivity.this, UserPageActivity.class);
+            Intent intent = new Intent(ChangePasswordActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();
             //overridePendingTransition(0,0);
         }else if(id==R.id.menu_liveStream){
-            Intent intent = new Intent(ChangePassworgActivity.this, StreamView.class);
+            Intent intent = new Intent(ChangePasswordActivity.this, StreamView.class);
             startActivity(intent);
             finish();
             //overridePendingTransition(0,0);
         } else if(id==R.id.menu_uploadImg){
-            Intent intent = new Intent(ChangePassworgActivity.this, UploadToFirebaseActivity.class);
+            Intent intent = new Intent(ChangePasswordActivity.this, UploadToFirebaseActivity.class);
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_updateProfile){
-            Intent intent = new Intent(ChangePassworgActivity.this, UpdateProfileActivity.class);
+            Intent intent = new Intent(ChangePasswordActivity.this, UpdateProfileActivity.class);
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_updateEmail){
-            Intent intent = new Intent(ChangePassworgActivity.this, UpdateEmailActivity.class);
+            Intent intent = new Intent(ChangePasswordActivity.this, UpdateEmailActivity.class);
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_changePwd){
-            Intent intent = new Intent(ChangePassworgActivity.this, ChangePassworgActivity.class);
+            Intent intent = new Intent(ChangePasswordActivity.this, ChangePasswordActivity.class);
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_deleteAcc){
-       Intent intent = new Intent(ChangePassworgActivity.this, DeleteAccountActivity.class);
+       Intent intent = new Intent(ChangePasswordActivity.this, DeleteAccountActivity.class);
         startActivity(intent);finish();
         }else if( id==R.id.menu_Logout){
             authProfile.signOut();
-            Toast.makeText(ChangePassworgActivity.this, "Logged out",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(ChangePassworgActivity.this, LoggingInActivityMainScreen.class);
+            Toast.makeText(ChangePasswordActivity.this, "Logged out",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ChangePasswordActivity.this, LoggingInActivityMainScreen.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
 
         }else{
-            Toast.makeText(ChangePassworgActivity.this, "Something went wrong",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this, "Something went wrong",Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }

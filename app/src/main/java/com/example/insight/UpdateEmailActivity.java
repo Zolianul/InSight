@@ -2,7 +2,6 @@ package com.example.insight;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -242,7 +241,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_changePwd){
-        Intent intent = new Intent(UpdateEmailActivity.this, ChangePassworgActivity.class);
+        Intent intent = new Intent(UpdateEmailActivity.this, ChangePasswordActivity.class);
         startActivity(intent);
         finish();
         }else if( id==R.id.menu_deleteAcc){

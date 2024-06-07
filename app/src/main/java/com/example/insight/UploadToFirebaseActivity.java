@@ -3,7 +3,6 @@ package com.example.insight;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.ContentResolver;
@@ -25,13 +24,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -213,7 +209,7 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else if( id==R.id.menu_changePwd){
-            Intent intent = new Intent(UploadToFirebaseActivity.this, ChangePassworgActivity.class);
+            Intent intent = new Intent(UploadToFirebaseActivity.this, ChangePasswordActivity.class);
             startActivity(intent);finish();
         }else if( id==R.id.menu_deleteAcc){
             Intent intent = new Intent(UploadToFirebaseActivity.this, DeleteAccountActivity.class);
