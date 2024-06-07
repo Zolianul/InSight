@@ -51,11 +51,8 @@ public class RegisteringActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registering);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Register yourself");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
-
-        //getSupportActionBar().setTitle("Register");
         Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
         progressBar = findViewById(R.id.progressBar);
         editTestRegisterFullName= findViewById(R.id.edit_text_register_full_name);
@@ -66,7 +63,6 @@ public class RegisteringActivity extends AppCompatActivity {
         editTestRegisterConfirmPwd=findViewById(R.id.edit_text_register_password_confirm);
         radioGroupRegisterGender=findViewById(R.id.radio_group_register_gender);
         radioGroupRegisterGender.clearCheck();
-
         editTestRegisterDoB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +97,6 @@ public class RegisteringActivity extends AppCompatActivity {
                 String textConfirmPwd = editTestRegisterConfirmPwd.getText().toString();
                 String textGender;
 
-                //valid phone no
                 String mobileRegex="[0-1][0-9]{9}";
                 Matcher mobileMatcher;
                 Pattern mobilePattern = Pattern.compile(mobileRegex);
@@ -140,7 +135,6 @@ public class RegisteringActivity extends AppCompatActivity {
                     Toast.makeText(RegisteringActivity.this,"Please enter a valid phone number",Toast.LENGTH_LONG).show();
                     editTestRegisterMobile.setError("Mobile number is not valid");
                     editTestRegisterMobile.requestFocus();
-
                 }else if (TextUtils.isEmpty(textPwd)){
                     Toast.makeText(RegisteringActivity.this,"Please enter your password",Toast.LENGTH_LONG).show();
                     editTestRegisterPwd.setError("Password is required");

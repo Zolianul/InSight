@@ -28,15 +28,14 @@ public class StreamView extends AppCompatActivity {
         setContentView(R.layout.activity_stream_view);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Live Stream");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         authProfile= FirebaseAuth.getInstance();
         FirebaseUser  firebaseUser= authProfile.getCurrentUser();
         mWebView= (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient());
         //mWebView.loadUrl("http://192.168.90.205:5000");
-        //mWebView.loadUrl("http://192.168.252.64:5000");
-        mWebView.loadUrl("https://google.com");
+        mWebView.loadUrl("http://192.168.252.64:5000");
+
     }
     public boolean onCreateOptionsMenu( Menu menu){
         getMenuInflater().inflate(R.menu.common_menu,menu);

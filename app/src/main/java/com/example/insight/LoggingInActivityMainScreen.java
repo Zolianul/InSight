@@ -14,14 +14,11 @@ public class LoggingInActivityMainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Logging In");
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView((R.layout.activity_logging_in));
 
+        //open login activity
 
-        //set the title
-        //getSupportActionBar().setTitle("FirebaseApp");
-
-        //open long in activity
         Button buttonLogin=findViewById((R.id.button_login));
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
