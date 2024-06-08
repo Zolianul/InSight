@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:orientation="vertical"
-                android:background="@color/purple_700">
+                android:background="@color/muddy_red">
 
                 <TextView
                     android:id="@+id/text_view_delete_user_title"

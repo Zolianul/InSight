@@ -3,7 +3,7 @@
     <string name="welcome_message_profile">Welcome, %1$s!</string>
     <string name="register"><u>Register</u></string>
     <string name="click_here_to_reset"><u>Tap here to reset it!</u></string>
-    <string name="register_btn">Tap here to register!</string>
+    <string name="register_btn"><u>Tap here to register!</u></string>
     <string name="login"><u>Login</u></string>
     <string name="update_email_u"><u>Update Email</u></string>
     <string name="upload_pic_u"><u>Upload new profile picture</u></string>
@@ -23,5 +23,5 @@
     <string name="gender">Gender</string>
     <string name="phone">Phone number</string>
     <string name="registered_user_since">Member since</string>
-    <string name="view_camera_photos">View Camera photos</string>
+    <string name="view_camera_photos"><u>View Camera photos</u></string>
 </resources>

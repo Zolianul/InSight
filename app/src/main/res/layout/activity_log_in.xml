@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:orientation="vertical"
-                android:background="@color/purple_700">
+                android:background="@color/muddy_red">
 
                 <TextView
                     android:id="@+id/text_view_login_title"
@@ -190,7 +190,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/register"
-                        android:textColor="@color/purple_700"
+                        android:textColor="@color/muddy_red"
                         android:textAlignment="center" />
                 </LinearLayout>
 
@@ -216,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/click_here_to_reset"
-                        android:textColor="@color/purple_700"
+                        android:textColor="@color/muddy_red"
                         android:textAlignment="center" />
                 </LinearLayout>
 

@@ -21,7 +21,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:background="@color/purple_700">
+                android:background="@color/muddy_red">
 
                 <TextView
                     android:id="@+id/text_view_register_title"
@@ -258,7 +258,7 @@
                             android:id="@+id/radio_choice_female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/purple_500"
+                            android:buttonTint="@color/muddy_red"
                             android:text="Female"
                             android:textColor="#555555"
                             android:textSize="16sp" />
@@ -268,7 +268,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:buttonTint="@color/purple_500"
+                            android:buttonTint="@color/purple_2"
                             android:text="Male"
                             android:textColor="#555555"
                             android:textSize="16sp" />

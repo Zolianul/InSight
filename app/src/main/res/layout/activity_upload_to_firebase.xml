@@ -26,7 +26,7 @@ android:layout_height="match_parent">
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="@color/purple"
             android:text="@string/choose_file" />
 
         <EditText
@@ -65,7 +65,7 @@ android:layout_height="match_parent">
             android:layout_marginBottom="50dp"
             android:layout_toEndOf="@+id/button_upload"
             android:text="@string/show_uploads"
-            android:textColor="@color/purple_700" />
+            android:textColor="@color/brown_red" />
         <TextView
             android:id="@+id/text_view_show_unknowns"
             android:layout_width="wrap_content"
@@ -76,7 +76,7 @@ android:layout_height="match_parent">
             android:layout_marginBottom="50dp"
             android:layout_toLeftOf="@+id/button_upload"
             android:text="@string/view_camera_photos"
-            android:textColor="@color/purple_700" />
+            android:textColor="@color/brown_red" />
 
         <ProgressBar
             android:id="@+id/progressBar"

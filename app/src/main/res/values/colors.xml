@@ -6,10 +6,11 @@
     <color name="lime">#00FF00</color>
     <color name="dark_green">#006400</color>
     <color name="light_gray">#edf2f7</color>
-    <color name="purple_700">#644ac3</color>
-    <color name="purple_200">#ffbb86fc</color>
-    <color name="purple_500">#754ee4</color>
-    <color name="teal_200">#ff03dac5</color>
-    <color name="teal_700">#f000ff</color>
-
+    <color name="dark_purple">#644ac0</color>
+    <color name="purple">#ffbb86dc</color>
+    <color name="purple_2">#754ed4</color>
+    <color name="teal_2">#ff03dac5</color>
+    <color name="teal">#f000ff</color>
+    <color name="muddy_red">#a83253</color>
+    <color name="brown_red">#3b3637</color>
 </resources>

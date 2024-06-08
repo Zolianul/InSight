@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/image_view_logo_app"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="22dp"
             android:text="Welcome to InSight\nPlease LogIn or Register to continue"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
@@ -53,7 +51,7 @@
             android:layout_below="@id/text_view_welcome_msg"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="170dp"
-            android:background="@color/purple_700"
+            android:background="@color/muddy_red"
             android:text="Login" />
 
 
@@ -72,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_register_new_acct"
             android:text="@string/register"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/muddy_red"
             android:textAlignment="center" />
 
     </RelativeLayout>

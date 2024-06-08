@@ -24,7 +24,7 @@
                 android:id="@+id/layout_head"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@color/purple_700">
+                android:background="@color/muddy_red">
 
                 <RelativeLayout
                     android:layout_width="match_parent"

@@ -42,8 +42,6 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Log In");
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         editTextEmail=findViewById(R.id.edit_text_login_email);
         editTextPwd=findViewById(R.id.edit_text_login_pwd);
         progressBar=findViewById(R.id.progressBar);
@@ -69,15 +67,12 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-
-        //hide password
         ImageView imageviewShowHidePwd = findViewById(R.id.image_show_hide_pwd);
         imageviewShowHidePwd.setImageResource(R.drawable.hide_pwd);
         imageviewShowHidePwd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 if(editTextPwd.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
-                    //iff pwd is visible, set it invisible
                     editTextPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     imageviewShowHidePwd.setImageResource(R.drawable.hide_pwd);
                 }else{
@@ -86,8 +81,6 @@ public class LogInActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //login in button logic
 
         Button buttonLogin = findViewById(R.id.button_login);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -123,16 +116,10 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
-                    //get instance of current user
                     FirebaseUser firebaseUser= authProfile.getCurrentUser();
-
-                    //chec if email was verified
 
                     if(firebaseUser.isEmailVerified()){
                         Toast.makeText(LogInActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
-                        //oppen user profile
-                        //Start the user page activity
                         startActivity(new Intent(LogInActivity.this,UserPageActivity.class));
                         finish();
                     }else{
@@ -145,11 +132,9 @@ public class LogInActivity extends AppCompatActivity {
                     try{
                         throw  task.getException();
                     } catch (FirebaseAuthInvalidUserException e){
-                        //Toast.makeText(LogInActivity.this, "Invalid user",Toast.LENGTH_SHORT).show();
                         editTextEmail.setError("Invalid user");
                         editTextEmail.requestFocus();
                     }catch (FirebaseAuthInvalidCredentialsException e){
-                        //Toast.makeText(LogInActivity.this, "invalid credentials!",Toast.LENGTH_SHORT).show();
                         editTextEmail.setError("invalid credentials");
                         editTextEmail.requestFocus();
                     }catch (Exception e){
@@ -170,7 +155,6 @@ public class LogInActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(LogInActivity.this);
         builder.setTitle("Email not verified");
         builder.setMessage("Please verify your email now.");
-        //open email if user agrees to continue
         builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -182,13 +166,11 @@ public class LogInActivity extends AppCompatActivity {
 
             }
         });
-//create the alert dialog
         AlertDialog alertDialog = builder.create();
-
-        //show the alert dialog
     alertDialog.show();
     }
-//check if user is logged in. if yes, take it to user page
+
+
     @Override
     protected void onStart() {
         super.onStart();
