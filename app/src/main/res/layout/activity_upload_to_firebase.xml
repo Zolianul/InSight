@@ -67,7 +67,7 @@ android:layout_height="match_parent">
             android:text="@string/show_uploads"
             android:textColor="@color/brown_red" />
         <TextView
-            android:id="@+id/text_view_show_unknowns"
+            android:id="@+id/text_view_show_uploaded_unknown_ppl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/image_view_img_to_upload"

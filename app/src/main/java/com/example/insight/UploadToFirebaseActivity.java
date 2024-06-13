@@ -51,25 +51,23 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload_to_firebase);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Upload to Firebase");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         swipeToRefresh();
+        progressBar=findViewById(R.id.progressBar);
+
 
         Button buttonUploadPicChoose = findViewById(R.id.button_choose_image);
         Button buttonUploadPic=findViewById(R.id.button_upload);
-        progressBar=findViewById(R.id.progressBar);
         imageViewUploadPic=findViewById(R.id.image_view_img_to_upload);
+
         editText_img_name=findViewById(R.id.edit_text_file_name);
         mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
-        mTextViewShowUnknowns = findViewById(R.id.text_view_show_unknowns);
+        mTextViewShowUnknowns = findViewById(R.id.text_view_show_uploaded_unknown_ppl);
+
+
         authProfile = FirebaseAuth.getInstance();
         firebaseUser =authProfile.getCurrentUser();
         storageReference= FirebaseStorage.getInstance().getReference("UserUploads");
-        //databaseReference= FirebaseDatabase.getInstance().getReference("home/raspberry_user/pi");
-        //Uri uri= firebaseUser.getPhotoUrl();
-
-
-
-        //Picasso.with(UploadToFirebaseActivity.this).load(uri).into(imageViewUploadPic);
 
         buttonUploadPicChoose.setOnClickListener(new View.OnClickListener() {
             @Override

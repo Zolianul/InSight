@@ -41,10 +41,9 @@ public class UserPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_page);
-
         Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
+        progressBar=findViewById(R.id.progress_bar);
 
         textViewWelcome=findViewById(R.id.text_view_show_welcome_msg);
         textViewFullName=findViewById(R.id.text_view_show_full_name);
@@ -52,12 +51,7 @@ public class UserPageActivity extends AppCompatActivity {
         textViewDoB=findViewById(R.id.text_view_show_birthday);
         textViewGender=findViewById(R.id.text_view_show_gender);
         textViewMobile=findViewById(R.id.text_view_show_phone_no);
-        progressBar=findViewById(R.id.progress_bar);
-
         imageView=findViewById(R.id.image_view_profile_pic);
-
-
-
 
 
         imageView.setOnClickListener(v -> {
@@ -102,7 +96,6 @@ public class UserPageActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserPageActivity.this);
         builder.setTitle("Email not verified");
         builder.setMessage("Please verify your email now.You can't login without email verification.");
-        //open email if user agrees to continue
         builder.setPositiveButton("Continue", (dialog, which) -> {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_APP_EMAIL);
@@ -111,17 +104,12 @@ public class UserPageActivity extends AppCompatActivity {
 
 
         });
-//create the alert dialog
         AlertDialog alertDialog = builder.create();
-
-        //show the alert dialog
         alertDialog.show();
     }
 
     private void showUserProfile(FirebaseUser  firebaseUser) {
         String userID= firebaseUser.getUid();
-
-        //extract data from the db
 
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
         referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {

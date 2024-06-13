@@ -46,9 +46,9 @@ public class UpdateEmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_email);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Update your email");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
         progressBar=findViewById(R.id.progressBar);
+
         editTextPwd=findViewById(R.id.edit_text_update_email_pwd);
         editTextNewEmail= findViewById(R.id.edit_text_update_email_new_email);
         textViewAuthenticated=findViewById(R.id.text_view_update_email_authenticated_user_msg);
@@ -59,7 +59,6 @@ public class UpdateEmailActivity extends AppCompatActivity {
 
         authProfile=FirebaseAuth.getInstance();
         firebaseUser=authProfile.getCurrentUser();
-
         userOldEmail=firebaseUser.getEmail();
         TextView textviewOldEmail = findViewById(R.id.text_view_update_email_old_email);
         textviewOldEmail.setText(userOldEmail);
@@ -170,9 +169,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> verifytask) {
                             if (verifytask.isComplete()){
-                                String email = firebaseUser.getEmail();
-                               // Toast.makeText(UpdateEmailActivity.this,"Successfully updated email",Toast.LENGTH_LONG).show();
-                                Toast.makeText(UpdateEmailActivity.this,email+"sadsa"+userNewEmail,Toast.LENGTH_LONG).show();
+                               Toast.makeText(UpdateEmailActivity.this,"Successfully updated email",Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
                                 startActivity(intent);
                                 finish();

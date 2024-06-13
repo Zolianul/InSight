@@ -58,10 +58,59 @@
                 android:padding="15dp">
 
                 <RelativeLayout
+                    android:id="@+id/RL_current_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/image_email"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/email_img" />
+
+                    <TextView
+                        android:id="@+id/text_view_usr_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_toEndOf="@id/image_email"
+                        android:padding="6dp"
+                        android:text="Current Email" />
+
+                    <View
+                        android:id="@+id/divider_email"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/text_view_usr_email"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/darker_gray" />
+
+                    <TextView
+                        android:id="@+id/text_view_usremail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_view_usr_email"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/image_email"
+                        android:background="@android:color/transparent"
+                        android:padding="6dp"
+                        android:hint="Enter your current email address"
+                        android:textColor="#555555"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:id="@+id/RL_curr_pwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:layout_below="@id/RL_current_email"
                     android:background="@drawable/border">
 
                     <ImageView

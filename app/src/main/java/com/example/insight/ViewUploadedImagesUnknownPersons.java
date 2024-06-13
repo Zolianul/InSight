@@ -53,7 +53,7 @@ public class ViewUploadedImagesUnknownPersons extends AppCompatActivity {
         firebaseUser = authProfile.getCurrentUser();
 
         if (firebaseUser != null) {
-            FirebaseStorage.getInstance().getReference().child("UserUploads/"+firebaseUser.getUid()+"/Pi").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            FirebaseStorage.getInstance().getReference().child("UserUploads/"+firebaseUser.getUid()+"/RPI").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
                 @Override
                 public void onSuccess(ListResult listResult) {
                     arrayList = new ArrayList<>();

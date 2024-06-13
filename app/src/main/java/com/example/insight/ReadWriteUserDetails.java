@@ -1,5 +1,5 @@
 package com.example.insight;
-
+//done
 public class ReadWriteUserDetails {
     public String dateOfBirth,gender,phone;
 

@@ -55,6 +55,8 @@ public class RegisteringActivity extends AppCompatActivity {
 
         Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
         progressBar = findViewById(R.id.progressBar);
+
+
         editTestRegisterFullName= findViewById(R.id.edit_text_register_full_name);
         editTestRegisterEmail=findViewById(R.id.edit_text_register_email);
         editTestRegisterDoB=findViewById(R.id.edit_text_register_birthday);
@@ -63,6 +65,7 @@ public class RegisteringActivity extends AppCompatActivity {
         editTestRegisterConfirmPwd=findViewById(R.id.edit_text_register_password_confirm);
         radioGroupRegisterGender=findViewById(R.id.radio_group_register_gender);
         radioGroupRegisterGender.clearCheck();
+
         editTestRegisterDoB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,15 +192,10 @@ public class RegisteringActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(RegisteringActivity.this,"User registered succesfully",Toast.LENGTH_LONG).show();
                     FirebaseUser firebaseUser = auth.getCurrentUser();
-                    //create user in database
-
                     UserProfileChangeRequest profileChangeRequest=new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
                     ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB,textGender,textMobile);
-
-                    //extracting user references from db
-
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -205,9 +203,7 @@ public class RegisteringActivity extends AppCompatActivity {
 
                             if(task.isSuccessful()){
 
-                                //send verification email
                                 firebaseUser.sendEmailVerification();
-
                                 Toast.makeText(RegisteringActivity.this,"User succesfully registered.Please verify your email.",Toast.LENGTH_LONG).show();
 
                                 Intent intent = new Intent(RegisteringActivity.this, UserPageActivity.class);

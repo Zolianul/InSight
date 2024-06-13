@@ -51,33 +51,17 @@ public class UpdateProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Update your profile");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
         progressBar = findViewById(R.id.progressBar);
         editTextUpdateName=findViewById(R.id.edit_text_update_profile_name);
         editTextUpdateMobile=findViewById(R.id.edit_text_update_profile_phone);
         editTextUpdatedob =findViewById(R.id.edit_text_update_profile_birthday);
-
         radioGroupUpdateGender =findViewById(R.id.radio_group_update_profile_gender);
 
         authProfile= FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         showProfile(firebaseUser);
-
-
-        //upload profile picture
-        TextView textViewUploadProfilePic= findViewById(R.id.text_view_profile_update_picture);
-        textViewUploadProfilePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( UpdateProfileActivity.this, UploadProfilePicActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-
 
         editTextUpdatedob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,10 +84,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 picker.show();
             }
         });
-
-
-
-
+        TextView textViewUploadProfilePic= findViewById(R.id.text_view_profile_update_picture);
+        textViewUploadProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( UpdateProfileActivity.this, UploadProfilePicActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         Button buttonUpdateProfile = findViewById(R.id.button_update_profile);
         buttonUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +143,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         }else{
 
             textGender=radioButtonUpdateGenderSelected.getText().toString();
-
             textFullName = editTextUpdateName.getText().toString();
             textDob = editTextUpdatedob.getText().toString();
             textMobile=editTextUpdateMobile.getText().toString();

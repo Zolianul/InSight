@@ -32,13 +32,13 @@ private final static String TAG ="ForgotPasswordActivity";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Forgot Password");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_forgot_password);
-
-
-        editTextPwdResetEmail=findViewById(R.id.edit_text_password_reset);
-        buttonPwdReset=findViewById(R.id.button_password_reset);
         progressBar=findViewById(R.id.progressBar);
+
+
+        editTextPwdResetEmail=findViewById(R.id.edit_text_password_reset_usr_email);
+        buttonPwdReset=findViewById(R.id.button_password_reset);
+
 
         buttonPwdReset.setOnClickListener(new View.OnClickListener() {
             @Override

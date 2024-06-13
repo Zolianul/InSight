@@ -46,7 +46,6 @@ public class LogInActivity extends AppCompatActivity {
         editTextPwd=findViewById(R.id.edit_text_login_pwd);
         progressBar=findViewById(R.id.progressBar);
 
-
         authProfile=FirebaseAuth.getInstance();
 
         TextView textViewForgotPwd = findViewById(R.id.text_view_forgot_password_link);
@@ -81,6 +80,7 @@ public class LogInActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         Button buttonLogin = findViewById(R.id.button_login);
         buttonLogin.setOnClickListener(new View.OnClickListener() {

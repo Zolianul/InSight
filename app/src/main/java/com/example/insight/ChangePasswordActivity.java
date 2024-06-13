@@ -31,8 +31,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
 
     private ProgressBar progressBar;
-    private TextView textViewAuthenticatedMessage;
-    private String userPwdCurr;
+    private TextView textViewAuthenticatedMessage,textviewEmail;
+    private String userPwdCurr,userEmail;
     private Button buttonChangePwd, buttonAuthenticateChangePwd;
     private EditText editTextChangeCurrentPwd, editTextChangePwdNew, editTextConfirmNewPwd;
 
@@ -61,6 +61,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser=authProfile.getCurrentUser();
 
+        userEmail=firebaseUser.getEmail();
+        TextView textviewEmail = findViewById(R.id.text_view_usremail);
+        textviewEmail.setText(userEmail);
+
         if(firebaseUser.equals("")){
             Toast.makeText(ChangePasswordActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(ChangePasswordActivity.this, UserPageActivity.class);
@@ -75,8 +79,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     private void AuthenticateUser(FirebaseUser firebaseUser) {
-
-
         buttonAuthenticateChangePwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +140,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         String userPwdNew = editTextChangePwdNew.getText().toString();
         String userPwdConfirmNew = editTextConfirmNewPwd.getText().toString();
-
         if(TextUtils.isEmpty(userPwdNew)){
             Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
             editTextChangePwdNew.setError("Please enter your new password");
@@ -148,13 +149,13 @@ public class ChangePasswordActivity extends AppCompatActivity {
             editTextConfirmNewPwd.setError("Please enter your new password");
             editTextConfirmNewPwd.requestFocus();
         } else if (!userPwdNew.matches(userPwdConfirmNew)) {
-            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Same password required",Toast.LENGTH_LONG).show();
             editTextConfirmNewPwd.setError("Please enter same new password");
             editTextConfirmNewPwd.requestFocus();
 
         }else if (userPwdNew.matches(userPwdCurr)) {
-            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
-            editTextChangePwdNew.setError("Please enter a different password");
+            Toast.makeText(ChangePasswordActivity.this,"A new password required",Toast.LENGTH_LONG).show();
+            editTextChangePwdNew.setError("Please enter a password, different from the current one.");
             editTextChangePwdNew.requestFocus();
 
         }else{

@@ -45,14 +45,12 @@ public class UploadProfilePicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_profile_pic);
-
+        progressBar=findViewById(R.id.progressBar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("UploadProfilePic");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         swipeToRefresh();
 
-        Button buttonUploadPicChoose = findViewById(R.id.button_choose_picture);
+        Button buttonChoosePic = findViewById(R.id.button_choose_picture);
         Button buttonUploadPic=findViewById(R.id.upload_pic_button);
-        progressBar=findViewById(R.id.progressBar);
         imageViewUploadPic=findViewById(R.id.image_view_profile_pic);
 
         authProfile = FirebaseAuth.getInstance();
@@ -60,11 +58,11 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         storageReference= FirebaseStorage.getInstance().getReference("DisplayPics");
 
         Uri uri= firebaseUser.getPhotoUrl();
-        //set user's current profile picture if it is already uploaded
+
 
         Picasso.with(UploadProfilePicActivity.this).load(uri).into(imageViewUploadPic);
 
-        buttonUploadPicChoose.setOnClickListener(new View.OnClickListener() {
+        buttonChoosePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFileChooser();
@@ -98,7 +96,6 @@ public class UploadProfilePicActivity extends AppCompatActivity {
     private void UploadPic() {
         if(uriImage!=null){
             StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid()+"/displaypic."+getFileExtension(uriImage));
-        //ulpoad to storage
 
             fileReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -109,14 +106,12 @@ public class UploadProfilePicActivity extends AppCompatActivity {
                             Uri downloadUri= uri;
                             firebaseUser = authProfile.getCurrentUser();
 
-                            //set the display image for the user
-
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setPhotoUri(downloadUri).build();
                             firebaseUser.updateProfile(profileUpdates);
                         }
                     });
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(UploadProfilePicActivity.this,"Succesfully uploaded",Toast.LENGTH_LONG).show();
+                    Toast.makeText(UploadProfilePicActivity.this,"Successfully uploaded",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(UploadProfilePicActivity.this,UserPageActivity.class);
                     startActivity(intent);
                     finish();
