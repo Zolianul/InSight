@@ -29,7 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Objects;
 
 public class UpdateEmailActivity extends AppCompatActivity {
-
+//
 
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
@@ -184,8 +184,6 @@ public class UpdateEmailActivity extends AppCompatActivity {
                             }
                         }
                     });
-
-
                 }else{
                     try{
                         throw task.getException();

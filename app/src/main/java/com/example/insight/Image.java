@@ -1,5 +1,5 @@
 package com.example.insight;
-
+//
 public class Image {
     String name,url;
 

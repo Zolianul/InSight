@@ -64,14 +64,11 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(image.getUrl()));
                             intent.setDataAndType(Uri.parse(image.getUrl()), "image/*");
                             startActivity(intent);
-                        }
-                    });
+                        }});
                     adapter.setOnItemLongClickListener(new ImageAdapter.OnItemLongClickListener() {
                         @Override
                         public void onLongClick(Image image) {
-                            showDeleteConfirmationDialog(image);
-                        }
-                    });
+                            showDeleteConfirmationDialog(image);}});
                     recyclerView.setAdapter(adapter);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         listResult.getItems().forEach(new Consumer<StorageReference>() {
@@ -85,28 +82,19 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
                                         image.setUrl(url);
                                         arrayList.add(image);
                                         adapter.notifyDataSetChanged();
-                                    } else {
-                                        Toast.makeText(ViewUploadedImagesActivity.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        });
-                    }
+                                    } else {Toast.makeText(ViewUploadedImagesActivity.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();}});}});}
                     progressCircle.setVisibility(View.INVISIBLE);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
+                }}).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     progressCircle.setVisibility(View.INVISIBLE);
-                    Toast.makeText(ViewUploadedImagesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+                    Toast.makeText(ViewUploadedImagesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();}});
         } else {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
             progressCircle.setVisibility(View.INVISIBLE);
         }
     }
-
+//
     private void showDeleteConfirmationDialog(Image image) {
         new AlertDialog.Builder(this)
                 .setTitle("Delete Image")

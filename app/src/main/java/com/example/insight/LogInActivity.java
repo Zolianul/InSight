@@ -42,11 +42,12 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Log In");
-        editTextEmail=findViewById(R.id.edit_text_login_email);
-        editTextPwd=findViewById(R.id.edit_text_login_pwd);
+        authProfile=FirebaseAuth.getInstance();
         progressBar=findViewById(R.id.progressBar);
 
-        authProfile=FirebaseAuth.getInstance();
+
+        editTextEmail=findViewById(R.id.edit_text_login_email);
+        editTextPwd=findViewById(R.id.edit_text_login_pwd);
 
         TextView textViewForgotPwd = findViewById(R.id.text_view_forgot_password_link);
         textViewForgotPwd.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +81,6 @@ public class LogInActivity extends AppCompatActivity {
                 }
             }
         });
-
 
         Button buttonLogin = findViewById(R.id.button_login);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +117,6 @@ public class LogInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser firebaseUser= authProfile.getCurrentUser();
-
                     if(firebaseUser.isEmailVerified()){
                         Toast.makeText(LogInActivity.this, "Log in successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LogInActivity.this,UserPageActivity.class));
@@ -127,7 +126,6 @@ public class LogInActivity extends AppCompatActivity {
                         authProfile.signOut();
                         showAlertDialog();
                     }
-
                 }else{
                     try{
                         throw  task.getException();
@@ -140,10 +138,7 @@ public class LogInActivity extends AppCompatActivity {
                     }catch (Exception e){
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(LogInActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-
                     }
-
-
                 }
                 progressBar.setVisibility(View.GONE);
             }

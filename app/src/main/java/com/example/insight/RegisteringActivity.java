@@ -35,7 +35,7 @@ import java.util.Calendar;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+//
 public class RegisteringActivity extends AppCompatActivity {
 
     private EditText editTestRegisterFullName,editTestRegisterEmail,editTestRegisterDoB,editTestRegisterMobile,editTestRegisterPwd,editTestRegisterConfirmPwd;
@@ -74,7 +74,6 @@ public class RegisteringActivity extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int year =calendar.get(Calendar.YEAR);
 
-
                 picker = new DatePickerDialog(RegisteringActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -91,7 +90,6 @@ public class RegisteringActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int selectedGenderId = radioGroupRegisterGender.getCheckedRadioButtonId();
                 radioButtonRegisterGenderSelected = findViewById(selectedGenderId);
-
                 String textFullName = editTestRegisterFullName.getText().toString();
                 String textEmail = editTestRegisterEmail.getText().toString();
                 String textDob = editTestRegisterDoB.getText().toString();
@@ -99,12 +97,10 @@ public class RegisteringActivity extends AppCompatActivity {
                 String textPwd = editTestRegisterPwd.getText().toString();
                 String textConfirmPwd = editTestRegisterConfirmPwd.getText().toString();
                 String textGender;
-
                 String mobileRegex="[0-1][0-9]{9}";
                 Matcher mobileMatcher;
                 Pattern mobilePattern = Pattern.compile(mobileRegex);
                 mobileMatcher = mobilePattern.matcher(textMobile);
-
 
                 if (TextUtils.isEmpty(textFullName)) {
                     Toast.makeText(RegisteringActivity.this, "Please Enter Your name", Toast.LENGTH_LONG).show();
@@ -194,7 +190,6 @@ public class RegisteringActivity extends AppCompatActivity {
                     FirebaseUser firebaseUser = auth.getCurrentUser();
                     UserProfileChangeRequest profileChangeRequest=new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
-
                     ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB,textGender,textMobile);
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -202,24 +197,18 @@ public class RegisteringActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
 
                             if(task.isSuccessful()){
-
                                 firebaseUser.sendEmailVerification();
                                 Toast.makeText(RegisteringActivity.this,"User succesfully registered.Please verify your email.",Toast.LENGTH_LONG).show();
-
                                 Intent intent = new Intent(RegisteringActivity.this, UserPageActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 finish();
                             }else{
                                 Toast.makeText(RegisteringActivity.this,"User registration failed.",Toast.LENGTH_LONG).show();
-
-
                             }progressBar.setVisibility(View.GONE);
 
                         }
                     });
-
-
                 }else{
                     try{
                         throw task.getException();
@@ -235,7 +224,6 @@ public class RegisteringActivity extends AppCompatActivity {
                     }catch(Exception e) {
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(RegisteringActivity.this, e.getMessage(),Toast.LENGTH_LONG).show();
-
                     }
                 }progressBar.setVisibility(View.GONE);
             }

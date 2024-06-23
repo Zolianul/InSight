@@ -42,7 +42,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Change Password");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+////
 
         setContentView(R.layout.activity_change_passworg);
 
@@ -137,7 +137,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     private void changePwd(FirebaseUser firebaseUser) {
-
         String userPwdNew = editTextChangePwdNew.getText().toString();
         String userPwdConfirmNew = editTextConfirmNewPwd.getText().toString();
         if(TextUtils.isEmpty(userPwdNew)){
@@ -152,7 +151,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             Toast.makeText(ChangePasswordActivity.this,"Same password required",Toast.LENGTH_LONG).show();
             editTextConfirmNewPwd.setError("Please enter same new password");
             editTextConfirmNewPwd.requestFocus();
-
         }else if (userPwdNew.matches(userPwdCurr)) {
             Toast.makeText(ChangePasswordActivity.this,"A new password required",Toast.LENGTH_LONG).show();
             editTextChangePwdNew.setError("Please enter a password, different from the current one.");
@@ -160,7 +158,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         }else{
             progressBar.setVisibility(View.VISIBLE);
-
             firebaseUser.updatePassword(userPwdNew).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

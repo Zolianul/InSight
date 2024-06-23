@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
 import java.util.Objects;
 
 public class UserPageActivity extends AppCompatActivity {
-
+//
     private TextView textViewWelcome,textViewFullName,textViewEmail,textViewDoB,textViewGender,textViewMobile;
     private ProgressBar progressBar;
     private String fullName,email,dob,gender,mobile;
@@ -91,7 +91,6 @@ public class UserPageActivity extends AppCompatActivity {
             showAlertDialog();
         }
     }
-
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserPageActivity.this);
         builder.setTitle("Email not verified");
@@ -101,8 +100,6 @@ public class UserPageActivity extends AppCompatActivity {
             intent.addCategory(Intent.CATEGORY_APP_EMAIL);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-
-
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
@@ -110,7 +107,6 @@ public class UserPageActivity extends AppCompatActivity {
 
     private void showUserProfile(FirebaseUser  firebaseUser) {
         String userID= firebaseUser.getUid();
-
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
         referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -133,10 +129,8 @@ public class UserPageActivity extends AppCompatActivity {
                     Picasso.with(UserPageActivity.this).load(uri).into(imageView);
                 } else {
                     Toast.makeText(UserPageActivity.this, "Something went wrong when fetching from the db!",Toast.LENGTH_LONG).show();
-                }
-                progressBar.setVisibility(View.GONE);
+                }progressBar.setVisibility(View.GONE);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(UserPageActivity.this, "Something went wrong when fetching from the db!",Toast.LENGTH_LONG).show();
@@ -157,31 +151,27 @@ public class UserPageActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
     int id =item.getItemId();
-
-    /*if(id == android.R.id.home){
-        NavUtils.navigateUpFromSameTask(UserPageActivity.this);
-
-    } else */if(id==R.id.menu_myProfile){
+    if(id==R.id.menu_myProfile){
         Intent intent = new Intent(UserPageActivity.this, UserPageActivity.class);
         startActivity(intent);
-        //finish();
-        //overridePendingTransition(0,0);
+        finish();
+        overridePendingTransition(0,0);
     } else if( id==R.id.menu_updateProfile){
         Intent intent = new Intent(UserPageActivity.this, UpdateProfileActivity.class);
         startActivity(intent);
-        //finish();
+        finish();
     }else if( id==R.id.menu_updateEmail){
         Intent intent = new Intent(UserPageActivity.this, UpdateEmailActivity.class);
         startActivity(intent);
-        //finish();
+        finish();
     }else if(id==R.id.menu_uploadImg){
         Intent intent = new Intent(UserPageActivity.this, UploadToFirebaseActivity.class);
         startActivity(intent);
-        //finish();
+        finish();
     }else if( id==R.id.menu_liveStream){
         Intent intent = new Intent(UserPageActivity.this, StreamView.class);
         startActivity(intent);
-        //finish();
+        finish();
     }else if( id==R.id.menu_changePwd){
         Intent intent = new Intent(UserPageActivity.this, ChangePasswordActivity.class);
         startActivity(intent);//finish();
@@ -195,7 +185,6 @@ public class UserPageActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         //finish();
-
     }else{
         Toast.makeText(UserPageActivity.this, "Something went wrong",Toast.LENGTH_LONG).show();
     }

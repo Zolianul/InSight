@@ -48,7 +48,7 @@ public class UploadProfilePicActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("UploadProfilePic");
         swipeToRefresh();
-
+//
         Button buttonChoosePic = findViewById(R.id.button_choose_picture);
         Button buttonUploadPic=findViewById(R.id.upload_pic_button);
         imageViewUploadPic=findViewById(R.id.image_view_profile_pic);
@@ -68,8 +68,6 @@ public class UploadProfilePicActivity extends AppCompatActivity {
                 openFileChooser();
             }
         });
-
-
 
         buttonUploadPic.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -147,7 +147,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/image_email"
                         android:background="@android:color/transparent"
-                        android:hint="enter your email address"
+                        android:hint="Enter your email address"
                         android:inputType="textEmailAddress"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -177,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_view_birthday"
                         android:padding="6dp"
-                        android:text="Date of Birth (dd/mm/yyyy)*" />
+                        android:text="Date of Birth (dd/mm/yyyy)" />
 
                     <View
                         android:id="@+id/divider_dob"
@@ -189,14 +189,14 @@
 
                     <EditText
                         android:id="@+id/edit_text_register_birthday"
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/text_view_register_birthday"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/image_view_birthday"
                         android:background="@android:color/transparent"
-                        android:hint="select your dob"
+                        android:hint="Select your date of birth"
                         android:inputType="date"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -209,7 +209,7 @@
                         android:layout_below="@id/text_view_register_birthday"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/edit_text_register_birthday"
+                        android:layout_toRightOf="@id/edit_text_register_birthday"
                         android:src="@drawable/calendar_img" />
                 </RelativeLayout>
 
@@ -236,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_view_gender"
                         android:padding="6dp"
-                        android:text="Gender*" />
+                        android:text="Gender" />
 
                     <View
                         android:id="@+id/divider_gender"
@@ -299,7 +299,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_phone"
                         android:padding="6dp"
-                        android:text="Mobile*" />
+                        android:text="Phone number" />
 
                     <View
                         android:id="@+id/divider_phone"
@@ -318,7 +318,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/image_phone"
                         android:background="@android:color/transparent"
-                        android:hint="enter your mobile no. (without +91)"
+                        android:hint="Enter your phone number"
                         android:inputType="phone"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -348,7 +348,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imagePwd"
                         android:padding="6dp"
-                        android:text="Password*" />
+                        android:text="Password" />
 
                     <View
                         android:id="@+id/divider"

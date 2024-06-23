@@ -54,15 +54,15 @@ public class DeleteAccountActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Delete Account");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_delete_account);
-
-
         progressBar=findViewById(R.id.progressBar);
+
         editTextUserPwd = findViewById(R.id.edit_text_delete_user_pwd);
         textViewUserAuthenticated = findViewById(R.id.text_view_delete_authenticated_user);
-        buttonDeleteUser = findViewById(R.id.button_delete_user);
         buttonReAuthenticate=findViewById(R.id.button_delete_authenticated_user);
 
+        buttonDeleteUser = findViewById(R.id.button_delete_user);
         buttonDeleteUser.setEnabled(false);
+
 
         authProfile=FirebaseAuth.getInstance();
         firebaseUser=authProfile.getCurrentUser();
@@ -139,7 +139,6 @@ public class DeleteAccountActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(DeleteAccountActivity.this);
         builder.setTitle("Delete Account");
         builder.setMessage("Are you sure you want to delete your account?");
-        //open email if user agrees to continue
         builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -148,7 +147,6 @@ public class DeleteAccountActivity extends AppCompatActivity {
 
             }
         });
-
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -158,16 +156,51 @@ public class DeleteAccountActivity extends AppCompatActivity {
 
             }
         });
-//create the alert dialog
         AlertDialog alertDialog = builder.create();
-alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+    alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
     @Override
     public void onShow(DialogInterface dialog) {
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.red));
     }
 });
-        //show the alert dialog
         alertDialog.show();
+    }
+
+
+
+    private void deleteUserData(FirebaseUser firebaseUser) {
+
+        if(firebaseUser.getPhotoUrl() != null) {
+            FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+            StorageReference storageReference = firebaseStorage.getReferenceFromUrl(firebaseUser.getPhotoUrl().toString());
+            storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Log.d(TAG, "OnSuccess: Photos Deleted");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG, e.getMessage());
+                    Toast.makeText(DeleteAccountActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        databaseReference.child(firebaseUser.getUid()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG,"OnSuccess: User Data Deleted");
+
+                deleteUser();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG,e.getMessage());
+                Toast.makeText(DeleteAccountActivity.this, e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void deleteUser() {
@@ -194,43 +227,6 @@ alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
 
         });
     }
-
-    private void deleteUserData(FirebaseUser firebaseUser) {
-
-        if(firebaseUser.getPhotoUrl() != null) {
-            FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
-            StorageReference storageReference = firebaseStorage.getReferenceFromUrl(firebaseUser.getPhotoUrl().toString());
-            storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Log.d(TAG, "OnSuccess: Photo Deleted");
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, e.getMessage());
-                    Toast.makeText(DeleteAccountActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        }
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
-        databaseReference.child(firebaseUser.getUid()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.d(TAG,"OnSuccess: User Data Deleted");
-
-                deleteUser();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG,e.getMessage());
-                Toast.makeText(DeleteAccountActivity.this, e.getMessage(),Toast.LENGTH_LONG).show();
-            }
-        });
-
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu( Menu menu){

@@ -90,7 +90,7 @@ public class UploadToFirebaseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+//
 
         buttonUploadPic.setOnClickListener(new View.OnClickListener() {
             @Override

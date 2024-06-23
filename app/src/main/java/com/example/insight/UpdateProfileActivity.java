@@ -36,7 +36,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UpdateProfileActivity extends AppCompatActivity {
-
+//
     private EditText editTextUpdateName, editTextUpdatedob, editTextUpdateMobile;
     private RadioGroup radioGroupUpdateGender;
     private RadioButton radioButtonUpdateGenderSelected;
@@ -53,15 +53,17 @@ public class UpdateProfileActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Update your profile");
         swipeToRefresh();
 
+        authProfile= FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+        showProfile(firebaseUser);
+
         progressBar = findViewById(R.id.progressBar);
+
+
         editTextUpdateName=findViewById(R.id.edit_text_update_profile_name);
         editTextUpdateMobile=findViewById(R.id.edit_text_update_profile_phone);
         editTextUpdatedob =findViewById(R.id.edit_text_update_profile_birthday);
         radioGroupUpdateGender =findViewById(R.id.radio_group_update_profile_gender);
-
-        authProfile= FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = authProfile.getCurrentUser();
-        showProfile(firebaseUser);
 
         editTextUpdatedob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +86,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 picker.show();
             }
         });
+
         TextView textViewUploadProfilePic= findViewById(R.id.text_view_profile_update_picture);
         textViewUploadProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +96,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         Button buttonUpdateProfile = findViewById(R.id.button_update_profile);
         buttonUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,13 +111,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private void updateProfile(FirebaseUser firebaseUser) {
         int selectedGenderID= radioGroupUpdateGender.getCheckedRadioButtonId();
         radioButtonUpdateGenderSelected = findViewById(selectedGenderID);
-
-        //valid phone no
         String mobileRegex="[0-1][0-9]{9}";
         Matcher mobileMatcher;
         Pattern mobilePattern = Pattern.compile(mobileRegex);
         mobileMatcher = mobilePattern.matcher(textMobile);
-
 
         if (TextUtils.isEmpty(textFullName)) {
             Toast.makeText(UpdateProfileActivity.this, "Please Enter Your name", Toast.LENGTH_LONG).show();
@@ -141,7 +142,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
             editTextUpdateMobile.requestFocus();
 
         }else{
-
             textGender=radioButtonUpdateGenderSelected.getText().toString();
             textFullName = editTextUpdateName.getText().toString();
             textDob = editTextUpdatedob.getText().toString();

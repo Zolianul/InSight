@@ -43,14 +43,14 @@ public class ViewUploadedImagesUnknownPersons extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Unknown Persons");
+        progressCircle = findViewById(R.id.progress_circle);
+        authProfile = FirebaseAuth.getInstance();
+        firebaseUser = authProfile.getCurrentUser();
+
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        progressCircle = findViewById(R.id.progress_circle);
-
-        authProfile = FirebaseAuth.getInstance();
-        firebaseUser = authProfile.getCurrentUser();
 
         if (firebaseUser != null) {
             FirebaseStorage.getInstance().getReference().child("UserUploads/"+firebaseUser.getUid()+"/RPI").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
