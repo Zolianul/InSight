@@ -36,7 +36,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UpdateProfileActivity extends AppCompatActivity {
-//
     private EditText editTextUpdateName, editTextUpdatedob, editTextUpdateMobile;
     private RadioGroup radioGroupUpdateGender;
     private RadioButton radioButtonUpdateGenderSelected;
@@ -152,7 +151,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
             String userID = firebaseUser.getUid();
 
-            progressBar.setVisibility(View.VISIBLE);
+            //progressBar.setVisibility(View.VISIBLE);
             referenceProfile.child(userID).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -173,7 +172,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                         }
 
                     }
-                    progressBar.setVisibility(View.GONE);
+                    //progressBar.setVisibility(View.GONE);
                 }
             });
 
@@ -184,7 +183,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         String userIdofRegistered = firebaseUser.getUid();
 
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
-        progressBar.setVisibility(View.VISIBLE);
+        //progressBar.setVisibility(View.VISIBLE);
 
         referenceProfile.child(userIdofRegistered).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -209,7 +208,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(UpdateProfileActivity.this, "Something wento wrong", Toast.LENGTH_LONG).show();
                 }
-                progressBar.setVisibility(View.GONE);
+                //progressBar.setVisibility(View.GONE);
             }
 
             @Override
