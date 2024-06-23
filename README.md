@@ -5,6 +5,7 @@ This project aims to create a seamless user experience by enabling users to regi
 
 
 Following, are instructions to run this app:
+
 It is necessary to download the source code and import it into AndroidStudio - this IDE is available for free.
 After all the packages and resources used in the application are downloaded by AndroidStudio, you can run the application through the interface of this IDE (there is a "RUN" button in the top right corner).
 The waiting time until the application is compiled and starts running can vary from 1 to 3 minutes. The first run generally takes 5 minutes.
