@@ -34,8 +34,9 @@ public class StreamView extends AppCompatActivity {
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient());
         //mWebView.loadUrl("http://192.168.90.205:5000");
-        //mWebView.loadUrl("http://192.168.222.66:5000");
-        mWebView.loadUrl("https://google.com");
+        //mWebView.loadUrl("http://192.168.222.66:5004");
+        mWebView.loadUrl("http://192.168.1.9:5008");
+        //mWebView.loadUrl("https://google.com");
     }
     public boolean onCreateOptionsMenu( Menu menu){
         getMenuInflater().inflate(R.menu.common_menu,menu);

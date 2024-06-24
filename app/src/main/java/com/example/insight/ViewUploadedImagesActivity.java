@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -124,5 +126,60 @@ public class ViewUploadedImagesActivity extends AppCompatActivity {
                 Toast.makeText(ViewUploadedImagesActivity.this, "Failed to delete image", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    public boolean onCreateOptionsMenu( Menu menu){
+        getMenuInflater().inflate(R.menu.common_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id =item.getItemId();
+        /*if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(StreamView.this);
+
+        }else*/ if(id==R.id.menu_myProfile){
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, UserPageActivity.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
+        } else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_updateProfile){
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, UpdateProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_updateEmail){
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, UpdateEmailActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_changePwd){
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, ChangePasswordActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_deleteAcc){
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, DeleteAccountActivity.class);
+            startActivity(intent);finish();
+        }else if( id==R.id.menu_Logout){
+            authProfile.signOut();
+            Toast.makeText(ViewUploadedImagesActivity.this, "Logged out",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ViewUploadedImagesActivity.this, LoggingInActivityMainScreen.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+
+        }else{
+            Toast.makeText(ViewUploadedImagesActivity.this, "Something went wrong",Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

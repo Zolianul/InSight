@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -42,7 +44,7 @@ public class ViewUploadedImagesUnknownPersons extends AppCompatActivity {
         setContentView(R.layout.activity_view_uploaded_images);
 
         FirebaseApp.initializeApp(this);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Unknown Persons");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("RPI Photos");
         progressCircle = findViewById(R.id.progress_circle);
         authProfile = FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
@@ -136,5 +138,60 @@ public class ViewUploadedImagesUnknownPersons extends AppCompatActivity {
                 Toast.makeText(ViewUploadedImagesUnknownPersons.this, "Failed to delete image", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    public boolean onCreateOptionsMenu( Menu menu){
+        getMenuInflater().inflate(R.menu.common_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        int id =item.getItemId();
+        /*if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(StreamView.this);
+
+        }else*/ if(id==R.id.menu_myProfile){
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, UserPageActivity.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
+        }else if(id==R.id.menu_liveStream){
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, StreamView.class);
+            startActivity(intent);
+            finish();
+            //overridePendingTransition(0,0);
+        } else if(id==R.id.menu_uploadImg){
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, UploadToFirebaseActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_updateProfile){
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, UpdateProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_updateEmail){
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, UpdateEmailActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_changePwd){
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, ChangePasswordActivity.class);
+            startActivity(intent);
+            finish();
+        }else if( id==R.id.menu_deleteAcc){
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, DeleteAccountActivity.class);
+            startActivity(intent);finish();
+        }else if( id==R.id.menu_Logout){
+            authProfile.signOut();
+            Toast.makeText(ViewUploadedImagesUnknownPersons.this, "Logged out",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ViewUploadedImagesUnknownPersons.this, LoggingInActivityMainScreen.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+
+        }else{
+            Toast.makeText(ViewUploadedImagesUnknownPersons.this, "Something went wrong",Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

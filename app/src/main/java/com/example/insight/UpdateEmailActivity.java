@@ -107,10 +107,10 @@ public class UpdateEmailActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 progressBar.setVisibility(View.GONE);
-                                Toast.makeText(UpdateEmailActivity.this,"You are now logged in. You can update your password",Toast.LENGTH_LONG).show();
+                                Toast.makeText(UpdateEmailActivity.this,"You are now logged in. You can Update your Email",Toast.LENGTH_LONG).show();
 
 
-                                textViewAuthenticated.setText("You are now logged in. Please change your password now.");
+                                textViewAuthenticated.setText("You are now logged in. You can now update your Email");
                                 editTextNewEmail.setEnabled(true);
                                 editTextPwd.setEnabled(false);
                                 buttonVerifyUser.setEnabled(false);

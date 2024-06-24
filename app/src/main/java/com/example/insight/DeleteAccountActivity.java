@@ -201,6 +201,11 @@ public class DeleteAccountActivity extends AppCompatActivity {
                 Toast.makeText(DeleteAccountActivity.this, e.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
+
+
+
+
+
     }
 
     private void deleteUser() {
