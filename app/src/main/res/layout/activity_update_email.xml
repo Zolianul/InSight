@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_gray"
@@ -84,6 +84,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_toEndOf="@id/image_email"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Current Email" />
 
                     <View
@@ -102,6 +103,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/image_email"
+                        android:textColorHint="@color/black"
                         android:background="@android:color/transparent"
                         android:padding="6dp"
                         android:hint="Enter your current email address"
@@ -132,6 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imagePwd"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Password" />
 
                     <View
@@ -150,10 +153,12 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imagePwd"
+                        android:textColorHint="@color/black"
                         android:background="@android:color/transparent"
                         android:hint="Enter your password"
                         android:inputType="textPassword"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
 
@@ -228,6 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_new_email"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="New Email" />
 
                     <View
@@ -246,8 +252,10 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/image_new_email"
+                        android:textColorHint="@color/black"
                         android:background="@android:color/transparent"
                         android:hint="Enter your new email address"
+                        android:textColor="@color/black"
                         android:inputType="textEmailAddress"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"

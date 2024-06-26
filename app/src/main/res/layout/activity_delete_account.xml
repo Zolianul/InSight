@@ -81,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imagePwd"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Password" />
 
                     <View
@@ -101,6 +102,8 @@
                         android:layout_toEndOf="@id/imagePwd"
                         android:background="@android:color/transparent"
                         android:hint="Enter your password"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:inputType="textPassword"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"

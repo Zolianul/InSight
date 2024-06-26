@@ -67,6 +67,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="30dp"
                     android:hint="@string/loading"
+                    android:textColorHint="@color/black"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@android:color/white" />
@@ -104,6 +105,8 @@
                         android:layout_centerVertical="true"
                         android:layout_alignStart="@id/img_profile"
                         android:hint="@string/loading"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:layout_marginStart="50dp"
                         />
                 </RelativeLayout>
@@ -138,6 +141,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/img_email"
                         android:layout_marginStart="50dp"
+                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
                         android:layout_centerVertical="true"
                         android:hint="@string/loading"
                         android:layout_marginTop="20dp"
@@ -174,7 +179,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/img_birthday"
                         android:hint="@string/loading"
+                        android:textColorHint="@color/black"
                         android:layout_centerVertical="true"
+                        android:textColor="@color/black"
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="20dp"
                         />
@@ -209,9 +216,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/img_gender"
+                        android:textColorHint="@color/black"
                         android:hint="@string/loading"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="50dp"
+                        android:textColor="@color/black"
                         android:layout_marginTop="20dp"
                         />
                 </RelativeLayout>
@@ -245,8 +254,10 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_alignStart="@id/img_phone_no"
+                        android:textColorHint="@color/black"
                         android:hint="@string/loading"
                         android:layout_marginStart="50dp"
+                        android:textColor="@color/black"
                         android:layout_marginTop="20dp"
                         />
 

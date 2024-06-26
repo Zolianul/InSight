@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="InSight"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -42,6 +43,7 @@
             android:layout_marginTop="22dp"
             android:text="Welcome to InSight\nPlease LogIn or Register to continue"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
         <Button
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/button_login"
             android:layout_marginTop="30dp"
+            android:textColor="@color/black"
             android:text="Do not have an account?"
             android:textAlignment="center" />
 

@@ -79,6 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_name"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Full Name" />
 
                     <View
@@ -98,7 +99,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/image_name"
                         android:background="@android:color/transparent"
+                        android:textColorHint="@color/black"
                         android:hint="Enter your full name"
+                        android:textColor="@color/black"
                         android:inputType="textPersonName"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -128,6 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_email"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Email" />
 
                     <View
@@ -148,6 +152,8 @@
                         android:layout_toEndOf="@id/image_email"
                         android:background="@android:color/transparent"
                         android:hint="Enter your email address"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:inputType="textEmailAddress"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -177,6 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_view_birthday"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Date of Birth (dd/mm/yyyy)" />
 
                     <View
@@ -197,6 +204,8 @@
                         android:layout_toEndOf="@id/image_view_birthday"
                         android:background="@android:color/transparent"
                         android:hint="Select your date of birth"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:inputType="date"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -236,6 +245,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_view_gender"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Gender" />
 
                     <View
@@ -299,6 +309,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/image_phone"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Phone number" />
 
                     <View
@@ -319,6 +330,8 @@
                         android:layout_toEndOf="@id/image_phone"
                         android:background="@android:color/transparent"
                         android:hint="Enter your phone number"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:inputType="phone"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
@@ -348,6 +361,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/imagePwd"
                         android:padding="6dp"
+                        android:textColor="@color/black"
                         android:text="Password" />
 
                     <View
@@ -368,7 +382,9 @@
                         android:layout_toEndOf="@id/imagePwd"
                         android:background="@android:color/transparent"
                         android:hint="Enter your password"
+                        android:textColor="@color/black"
                         android:inputType="textPassword"
+                        android:textColorHint="@color/black"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"
                         android:textSize="16sp" />
@@ -382,6 +398,8 @@
                         android:layout_toEndOf="@id/imagePwd"
                         android:background="@android:color/transparent"
                         android:hint="Enter your password again"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:inputType="textPassword"
                         android:padding="6dp"
                         android:textCursorDrawable="@drawable/edittextcursor"

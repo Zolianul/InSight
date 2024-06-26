@@ -27,6 +27,7 @@
                 android:layout_marginTop="0dp"
                 android:text="Upload your profile picture"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <Button
