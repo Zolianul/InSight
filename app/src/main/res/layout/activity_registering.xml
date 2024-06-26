@@ -41,7 +41,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_below="@id/text_view_register_title"
-                    android:text="Please register yourself to continue with the amazing experience!"
+                    android:text="Please register yourself"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
             </RelativeLayout>

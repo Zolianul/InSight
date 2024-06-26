@@ -133,7 +133,7 @@ public class LogInActivity extends AppCompatActivity {
                         editTextEmail.setError("Invalid user");
                         editTextEmail.requestFocus();
                     }catch (FirebaseAuthInvalidCredentialsException e){
-                        editTextEmail.setError("invalid credentials");
+                        editTextEmail.setError("Invalid credentials");
                         editTextEmail.requestFocus();
                     }catch (Exception e){
                         Log.e(TAG, e.getMessage());
@@ -148,7 +148,7 @@ public class LogInActivity extends AppCompatActivity {
 
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(LogInActivity.this);
-        builder.setTitle("Email not verified");
+        builder.setTitle("Email not verified.");
         builder.setMessage("Please verify your email now.");
         builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
             @Override

@@ -41,7 +41,7 @@
                     android:layout_marginRight="30dp"
                     android:textColor="@color/white"
                     android:layout_below="@id/text_view_change_pwd_title"
-                    android:text="You must authenticate\n before you can change your password"
+                    android:text="Please authenticate\n before you change your password"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
 
@@ -203,7 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:padding="6dp"
-                    android:text="Your profile is not authenticated yet!"
+                    android:text="You are not authenticated yet!"
                     android:textAlignment="center"
                     android:textColor="#555555"
                     android:textSize="16sp" />

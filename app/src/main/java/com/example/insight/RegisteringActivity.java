@@ -50,10 +50,10 @@ public class RegisteringActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registering);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Register yourself");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Register your new account!");
         swipeToRefresh();
 
-        Toast.makeText(RegisteringActivity.this,"You can register now",Toast.LENGTH_LONG).show();
+        Toast.makeText(RegisteringActivity.this,"Please register yourself",Toast.LENGTH_LONG).show();
         progressBar = findViewById(R.id.progressBar);
 
 
@@ -104,27 +104,27 @@ public class RegisteringActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(textFullName)) {
                     Toast.makeText(RegisteringActivity.this, "Please Enter Your name", Toast.LENGTH_LONG).show();
-                    editTestRegisterFullName.setError("Full name is required");
+                    editTestRegisterFullName.setError("Please Enter Your name");
                     editTestRegisterFullName.requestFocus();
                 } else if (TextUtils.isEmpty(textEmail)) {
                     Toast.makeText(RegisteringActivity.this, "Please Enter Your Email", Toast.LENGTH_LONG).show();
-                    editTestRegisterEmail.setError("Email is required");
+                    editTestRegisterEmail.setError("Please Enter Your Email");
                     editTestRegisterEmail.requestFocus();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
-                    Toast.makeText(RegisteringActivity.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
-                    editTestRegisterEmail.setError("Valid email is required");
+                    Toast.makeText(RegisteringActivity.this, "Please enter a valid email", Toast.LENGTH_LONG).show();
+                    editTestRegisterEmail.setError("Please enter a valid email");
                     editTestRegisterEmail.requestFocus();
                 } else if (TextUtils.isEmpty(textDob)) {
                     Toast.makeText(RegisteringActivity.this, "Please enter your date of birth", Toast.LENGTH_LONG).show();
-                    editTestRegisterDoB.setError("Your date of birth is required");
+                    editTestRegisterDoB.setError("Please enter your date of birth");
                     editTestRegisterDoB.requestFocus();
                 } else if (radioGroupRegisterGender.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(RegisteringActivity.this, "Please enter your gender", Toast.LENGTH_LONG).show();
-                    radioButtonRegisterGenderSelected.setError("Your gender is required");
+                    radioButtonRegisterGenderSelected.setError("Please enter your gender");
                     radioButtonRegisterGenderSelected.requestFocus();
                 } else if (TextUtils.isEmpty(textMobile)) {
-                    Toast.makeText(RegisteringActivity.this, "Please Enter Your Phone", Toast.LENGTH_LONG).show();
-                    editTestRegisterMobile.setError("Mobile is required");
+                    Toast.makeText(RegisteringActivity.this, "Please Enter Your Phone Number", Toast.LENGTH_LONG).show();
+                    editTestRegisterMobile.setError("Please Enter Your Phone Number");
                     editTestRegisterMobile.requestFocus();
                 } else if( textMobile.length()!=10){
                     Toast.makeText(RegisteringActivity.this,"Please enter a valid phone number",Toast.LENGTH_LONG).show();
@@ -132,23 +132,23 @@ public class RegisteringActivity extends AppCompatActivity {
                     editTestRegisterMobile.requestFocus();
                 }else if(!mobileMatcher.find()){
                     Toast.makeText(RegisteringActivity.this,"Please enter a valid phone number",Toast.LENGTH_LONG).show();
-                    editTestRegisterMobile.setError("Mobile number is not valid");
+                    editTestRegisterMobile.setError("Please enter a valid phone number");
                     editTestRegisterMobile.requestFocus();
                 }else if (TextUtils.isEmpty(textPwd)){
                     Toast.makeText(RegisteringActivity.this,"Please enter your password",Toast.LENGTH_LONG).show();
-                    editTestRegisterPwd.setError("Password is required");
+                    editTestRegisterPwd.setError("Please enter your password");
                     editTestRegisterPwd.requestFocus();
                 }else if( textPwd.length()<6) {
                     Toast.makeText(RegisteringActivity.this, "Password should be at least 6 digits", Toast.LENGTH_LONG).show();
-                    editTestRegisterPwd.setError("Password is too weak");
+                    editTestRegisterPwd.setError("Password should be at least 6 digits");
                     editTestRegisterPwd.requestFocus();
                 }else if (TextUtils.isEmpty(textConfirmPwd)){
-                    Toast.makeText(RegisteringActivity.this,"Please re-nter your password",Toast.LENGTH_LONG).show();
-                    editTestRegisterConfirmPwd.setError("Password confirmation is required");
+                    Toast.makeText(RegisteringActivity.this,"Please confirm your password",Toast.LENGTH_LONG).show();
+                    editTestRegisterConfirmPwd.setError("Please confirm your password");
                     editTestRegisterConfirmPwd.requestFocus();
                 }else if( !textPwd.equals(textConfirmPwd) ) {
                     Toast.makeText(RegisteringActivity.this, "Passwords do not match", Toast.LENGTH_LONG).show();
-                    editTestRegisterConfirmPwd.setError("Password confirmation is required");
+                    editTestRegisterConfirmPwd.setError("Passwords do not match");
                     editTestRegisterConfirmPwd.requestFocus();
                     editTestRegisterPwd.clearComposingText();
                     editTestRegisterConfirmPwd.clearComposingText();

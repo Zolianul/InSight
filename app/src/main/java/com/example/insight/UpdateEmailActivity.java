@@ -64,7 +64,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
         textviewOldEmail.setText(userOldEmail);
 
         if (firebaseUser.equals("")){
-            Toast.makeText(UpdateEmailActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
+            Toast.makeText(UpdateEmailActivity.this,"Something went wrong. Please log in again!",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(UpdateEmailActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();
@@ -94,7 +94,7 @@ public class UpdateEmailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 userPassword= editTextPwd.getText().toString();
                 if(TextUtils.isEmpty(userPassword)){
-                    Toast.makeText(UpdateEmailActivity.this,"Password is needed to continue",Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateEmailActivity.this,"Please enter your password",Toast.LENGTH_LONG).show();
                     editTextPwd.setError("Please enter your password");
                     editTextPwd.requestFocus();
                 }else {
@@ -127,11 +127,11 @@ public class UpdateEmailActivity extends AppCompatActivity {
                                         userNewEmail=editTextNewEmail.getText().toString();
                                         if(TextUtils.isEmpty(userNewEmail)){
                                             Toast.makeText(UpdateEmailActivity.this,"Please enter a new email",Toast.LENGTH_LONG).show();
-                                            editTextNewEmail.setError("Please enter your email");
+                                            editTextNewEmail.setError("Please enter a new email");
                                             editTextNewEmail.requestFocus();
                                         }else if(!Patterns.EMAIL_ADDRESS.matcher(userNewEmail).matches()){
                                             Toast.makeText(UpdateEmailActivity.this,"Please enter a valid email",Toast.LENGTH_LONG).show();
-                                            editTextNewEmail.setError("Please enter your email");
+                                            editTextNewEmail.setError("Please enter a valid email");
                                             editTextNewEmail.requestFocus();
                                         }else if(userOldEmail.matches(userNewEmail)){
                                             Toast.makeText(UpdateEmailActivity.this,"Please enter a new email, different from the old one!",Toast.LENGTH_LONG).show();

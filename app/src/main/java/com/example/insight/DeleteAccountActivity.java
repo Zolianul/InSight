@@ -42,9 +42,9 @@ public class DeleteAccountActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private EditText editTextUserPwd;
     private ProgressBar progressBar;
-    private TextView textViewUserAuthenticated;
+    private TextView textViewInfoMsg;
     private String userPwd;
-    private Button buttonReAuthenticate, buttonDeleteUser;
+    private Button buttonLogIn, buttonDeleteUser;
     private static final String TAG = "DeleteAccountActivity";
 
     @Override
@@ -57,8 +57,8 @@ public class DeleteAccountActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
 
         editTextUserPwd = findViewById(R.id.edit_text_delete_user_pwd);
-        textViewUserAuthenticated = findViewById(R.id.text_view_delete_authenticated_user);
-        buttonReAuthenticate=findViewById(R.id.button_delete_authenticated_user);
+        textViewInfoMsg = findViewById(R.id.text_view_delete_authenticated_user);
+        buttonLogIn =findViewById(R.id.button_delete_authenticated_user);
 
         buttonDeleteUser = findViewById(R.id.button_delete_user);
         buttonDeleteUser.setEnabled(false);
@@ -68,25 +68,25 @@ public class DeleteAccountActivity extends AppCompatActivity {
         firebaseUser=authProfile.getCurrentUser();
 
         if(firebaseUser.equals("")){
-            Toast.makeText(DeleteAccountActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
+            Toast.makeText(DeleteAccountActivity.this,"Something went wrong! Please log in again!",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(DeleteAccountActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();
         }else {
-            reAuthenticate(firebaseUser);
+            LogIn(firebaseUser);
         }
     }
 
-    private void reAuthenticate(FirebaseUser firebaseUser) {
+    private void LogIn(FirebaseUser firebaseUser) {
 
 
-        buttonReAuthenticate.setOnClickListener(new View.OnClickListener() {
+        buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userPwd=editTextUserPwd.getText().toString();
 
                 if(TextUtils.isEmpty(userPwd)){
-                    Toast.makeText(DeleteAccountActivity.this,"Password required",Toast.LENGTH_LONG).show();
+                    Toast.makeText(DeleteAccountActivity.this,"Please enter your password",Toast.LENGTH_LONG).show();
                     editTextUserPwd.setError("Please enter your password");
                     editTextUserPwd.requestFocus();
                 }else{
@@ -101,11 +101,11 @@ public class DeleteAccountActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 editTextUserPwd.setEnabled(false);
 
-                                buttonReAuthenticate.setEnabled(false);
+                                buttonLogIn.setEnabled(false);
                                 buttonDeleteUser.setEnabled(true);
 
-                                textViewUserAuthenticated.setText("You are now authenticated"+"You can delete your account now");
-                                Toast.makeText(DeleteAccountActivity.this,"You can now delete your account",Toast.LENGTH_LONG).show();
+                                textViewInfoMsg.setText("You are now authenticated!You can delete your account now!");
+                                Toast.makeText(DeleteAccountActivity.this,"You can now delete your account!",Toast.LENGTH_LONG).show();
 
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                     buttonDeleteUser.setBackgroundTintList(ContextCompat.getColorStateList(DeleteAccountActivity.this,R.color.dark_green));
@@ -139,7 +139,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(DeleteAccountActivity.this);
         builder.setTitle("Delete Account");
         builder.setMessage("Are you sure you want to delete your account?");
-        builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -147,7 +147,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
 
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(DeleteAccountActivity.this, UserPageActivity.class);
@@ -216,7 +216,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
 
                     authProfile.signOut();
-                    Toast.makeText(DeleteAccountActivity.this,"User deleted",Toast.LENGTH_LONG).show();
+                    Toast.makeText(DeleteAccountActivity.this,"Account successfully deleted",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(DeleteAccountActivity.this,LogInActivity.class);
                     startActivity(intent);
                     finish();

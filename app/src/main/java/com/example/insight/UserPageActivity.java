@@ -117,7 +117,7 @@ public class UserPageActivity extends AppCompatActivity {
                     email= firebaseUser.getEmail();
                     dob=readUserDetails.dateOfBirth;
                     gender=readUserDetails.gender;
-                    mobile=readUserDetails.phone;
+                    mobile=readUserDetails.phoneNumber;
 
                     textViewWelcome.setText(getString(R.string.welcome_message_profile,fullName));
                     textViewFullName.setText(fullName);

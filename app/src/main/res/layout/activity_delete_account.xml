@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="Delete your Profile"
+                    android:text="Delete your account"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
@@ -153,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:padding="6dp"
-                    android:text="Your profile is not Authenticated yet!"
+                    android:text="You are not authenticated yet!"
                     android:textAlignment="center"
                     android:textColor="#555555"
                     android:textSize="16sp" />
@@ -165,7 +165,7 @@
                     android:layout_below="@id/text_view_delete_authenticated_user"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    android:text="Delete Profile" />
+                    android:text="Delete Account" />
 
             </RelativeLayout>
 

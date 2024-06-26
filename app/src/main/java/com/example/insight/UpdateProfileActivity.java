@@ -36,10 +36,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UpdateProfileActivity extends AppCompatActivity {
-    private EditText editTextUpdateName, editTextUpdatedob, editTextUpdateMobile;
+    private EditText editTextUpdateName, editTextUpdateDateOfBirth, editTextUpdateMobile;
     private RadioGroup radioGroupUpdateGender;
     private RadioButton radioButtonUpdateGenderSelected;
-    private String textFullName, textDob,textGender, textMobile;
+    private String textFullName, textDateOfBirth,textGender, textMobile;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeContainer;
@@ -61,14 +61,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         editTextUpdateName=findViewById(R.id.edit_text_update_profile_name);
         editTextUpdateMobile=findViewById(R.id.edit_text_update_profile_phone);
-        editTextUpdatedob =findViewById(R.id.edit_text_update_profile_birthday);
+        editTextUpdateDateOfBirth =findViewById(R.id.edit_text_update_profile_birthday);
         radioGroupUpdateGender =findViewById(R.id.radio_group_update_profile_gender);
 
-        editTextUpdatedob.setOnClickListener(new View.OnClickListener() {
+        editTextUpdateDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String textSavedDoB[] = textDob.split("/");
+                String textSavedDoB[] = textDateOfBirth.split("/");
 
                 int day = Integer.parseInt(textSavedDoB[0]);
                 int month = Integer.parseInt(textSavedDoB[1])-1;
@@ -79,7 +79,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 picker = new DatePickerDialog(UpdateProfileActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        editTextUpdatedob.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+                        editTextUpdateDateOfBirth.setText(dayOfMonth+"/"+(month+1)+"/"+year);
                     }
                 },year,month,day);
                 picker.show();
@@ -117,36 +117,36 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(textFullName)) {
             Toast.makeText(UpdateProfileActivity.this, "Please Enter Your name", Toast.LENGTH_LONG).show();
-            editTextUpdateName.setError("Full name is required");
+            editTextUpdateName.setError("Please Enter Your name");
             editTextUpdateName.requestFocus();
-        } else if (TextUtils.isEmpty(textDob)) {
+        } else if (TextUtils.isEmpty(textDateOfBirth)) {
             Toast.makeText(UpdateProfileActivity.this, "Please enter your date of birth", Toast.LENGTH_LONG).show();
-            editTextUpdatedob.setError("Your date of birth is required");
-            editTextUpdatedob.requestFocus();
+            editTextUpdateDateOfBirth.setError("Please enter your date of birth");
+            editTextUpdateDateOfBirth.requestFocus();
         } else if (TextUtils.isEmpty(radioButtonUpdateGenderSelected.getText())) {
             Toast.makeText(UpdateProfileActivity.this, "Please enter your gender", Toast.LENGTH_LONG).show();
-            radioButtonUpdateGenderSelected.setError("Your gender is required");
+            radioButtonUpdateGenderSelected.setError("Please enter your gender");
             radioButtonUpdateGenderSelected.requestFocus();
         } else if (TextUtils.isEmpty(textMobile)) {
             Toast.makeText(UpdateProfileActivity.this, "Please Enter Your Phone", Toast.LENGTH_LONG).show();
-            editTextUpdateMobile.setError("Mobile is required");
+            editTextUpdateMobile.setError("Please Enter Your Phone");
             editTextUpdateMobile.requestFocus();
         } else if( textMobile.length()!=10){
-            Toast.makeText(UpdateProfileActivity.this,"Please enter a valid phone number",Toast.LENGTH_LONG).show();
-            editTextUpdateMobile.setError("Valid Mobile is required(10 digits)");
+            Toast.makeText(UpdateProfileActivity.this,"Please enter a valid phone number(10 digits)",Toast.LENGTH_LONG).show();
+            editTextUpdateMobile.setError("Please enter a valid phone number(10 digits)");
             editTextUpdateMobile.requestFocus();
         }else if(!mobileMatcher.find()){
             Toast.makeText(UpdateProfileActivity.this,"Please enter a valid phone number",Toast.LENGTH_LONG).show();
-            editTextUpdateMobile.setError("Mobile number is not valid");
+            editTextUpdateMobile.setError("Please enter a valid phone number");
             editTextUpdateMobile.requestFocus();
 
         }else{
             textGender=radioButtonUpdateGenderSelected.getText().toString();
             textFullName = editTextUpdateName.getText().toString();
-            textDob = editTextUpdatedob.getText().toString();
+            textDateOfBirth = editTextUpdateDateOfBirth.getText().toString();
             textMobile=editTextUpdateMobile.getText().toString();
 
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDob,textGender,textMobile);
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDateOfBirth,textGender,textMobile);
 
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
             String userID = firebaseUser.getUid();
@@ -158,7 +158,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         UserProfileChangeRequest profileUpdates= new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                         firebaseUser.updateProfile(profileUpdates);
-                        Toast.makeText(UpdateProfileActivity.this,"Succesfully updated",Toast.LENGTH_LONG).show();
+                        Toast.makeText(UpdateProfileActivity.this,"Succesfully updated profile",Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(UpdateProfileActivity.this, UserPageActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -191,12 +191,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 ReadWriteUserDetails readWriteUserDetails= snapshot.getValue(ReadWriteUserDetails.class);
                 if(readWriteUserDetails != null){
                     textFullName= firebaseUser.getDisplayName();
-                    textDob= readWriteUserDetails.dateOfBirth;
+                    textDateOfBirth = readWriteUserDetails.dateOfBirth;
                     textGender = readWriteUserDetails.gender;
-                    textMobile = readWriteUserDetails.phone;
+                    textMobile = readWriteUserDetails.phoneNumber;
 
                     editTextUpdateName.setText(textFullName);
-                    editTextUpdatedob.setText(textDob);
+                    editTextUpdateDateOfBirth.setText(textDateOfBirth);
                     editTextUpdateMobile.setText(textMobile);
 
                     if(textGender.equals("Male")){
@@ -206,14 +206,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     }
                     radioButtonUpdateGenderSelected.setChecked(true);
                 }else{
-                    Toast.makeText(UpdateProfileActivity.this, "Something wento wrong", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateProfileActivity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
                 }
                 //progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UpdateProfileActivity.this, "Something wento wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(UpdateProfileActivity.this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
             }
         });

@@ -31,9 +31,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
 
     private ProgressBar progressBar;
-    private TextView textViewAuthenticatedMessage,textviewEmail;
+    private TextView textViewInfoMsg,textviewEmail;
     private String userPwdCurr,userEmail;
-    private Button buttonChangePwd, buttonAuthenticateChangePwd;
+    private Button buttonChangePwd, buttonLogIn;
     private EditText editTextChangeCurrentPwd, editTextChangePwdNew, editTextConfirmNewPwd;
 
     @Override
@@ -50,10 +50,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
         editTextChangeCurrentPwd =findViewById(R.id.edit_text_change_current_pwd);
         editTextChangePwdNew = findViewById(R.id.edit_text_change_pwd_new);
         editTextConfirmNewPwd =findViewById(R.id.edit_text_confirm_new_pwd);
-        textViewAuthenticatedMessage =findViewById(R.id.text_view_authenticated_message);
+        textViewInfoMsg =findViewById(R.id.text_view_authenticated_message);
 
         buttonChangePwd=findViewById(R.id.button_change_pwd);
-        buttonAuthenticateChangePwd =findViewById(R.id.button_authenticate_change_pwd);
+        buttonLogIn =findViewById(R.id.button_authenticate_change_pwd);
 
         editTextChangePwdNew.setEnabled(false);
         editTextConfirmNewPwd.setEnabled(false);
@@ -66,7 +66,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         textviewEmail.setText(userEmail);
 
         if(firebaseUser.equals("")){
-            Toast.makeText(ChangePasswordActivity.this,"Something went wrong",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Something went wrong! Please log in again!",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(ChangePasswordActivity.this, UserPageActivity.class);
             startActivity(intent);
             finish();
@@ -79,14 +79,14 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     private void AuthenticateUser(FirebaseUser firebaseUser) {
-        buttonAuthenticateChangePwd.setOnClickListener(new View.OnClickListener() {
+        buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userPwdCurr= editTextChangeCurrentPwd.getText().toString();
 
                 if(TextUtils.isEmpty(userPwdCurr)){
-                    Toast.makeText(ChangePasswordActivity.this,"Password is required",Toast.LENGTH_LONG).show();
-                    editTextChangeCurrentPwd.setError("Please enter your password");
+                    Toast.makeText(ChangePasswordActivity.this,"Please enter your password!",Toast.LENGTH_LONG).show();
+                    editTextChangeCurrentPwd.setError("Please enter your password!");
                     editTextChangeCurrentPwd.requestFocus();
                 }else{
                     progressBar.setVisibility(View.VISIBLE);
@@ -102,11 +102,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                 editTextChangePwdNew.setEnabled(true);
                                 editTextConfirmNewPwd.setEnabled(true);
 
-                                buttonAuthenticateChangePwd.setEnabled(false);
+                                buttonLogIn.setEnabled(false);
                                 buttonChangePwd.setEnabled(true);
 
-                                textViewAuthenticatedMessage.setText("You are now authenticated"+"You can change your password now");
-                                Toast.makeText(ChangePasswordActivity.this,"You can now change your password",Toast.LENGTH_LONG).show();
+                                textViewInfoMsg.setText("You are now authenticated! You can change your password now!");
+                                Toast.makeText(ChangePasswordActivity.this,"You can now change your password!",Toast.LENGTH_LONG).show();
 
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                     buttonChangePwd.setBackgroundTintList(ContextCompat.getColorStateList(ChangePasswordActivity.this,R.color.dark_green));
@@ -140,19 +140,19 @@ public class ChangePasswordActivity extends AppCompatActivity {
         String userPwdNew = editTextChangePwdNew.getText().toString();
         String userPwdConfirmNew = editTextConfirmNewPwd.getText().toString();
         if(TextUtils.isEmpty(userPwdNew)){
-            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Please enter your new password",Toast.LENGTH_LONG).show();
             editTextChangePwdNew.setError("Please enter your new password");
             editTextChangePwdNew.requestFocus();
         }else if(TextUtils.isEmpty(userPwdConfirmNew)){
-            Toast.makeText(ChangePasswordActivity.this,"Password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Please enter your new password",Toast.LENGTH_LONG).show();
             editTextConfirmNewPwd.setError("Please enter your new password");
             editTextConfirmNewPwd.requestFocus();
         } else if (!userPwdNew.matches(userPwdConfirmNew)) {
-            Toast.makeText(ChangePasswordActivity.this,"Same password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Please enter same new password",Toast.LENGTH_LONG).show();
             editTextConfirmNewPwd.setError("Please enter same new password");
             editTextConfirmNewPwd.requestFocus();
         }else if (userPwdNew.matches(userPwdCurr)) {
-            Toast.makeText(ChangePasswordActivity.this,"A new password required",Toast.LENGTH_LONG).show();
+            Toast.makeText(ChangePasswordActivity.this,"Please enter a password, different from the current one.",Toast.LENGTH_LONG).show();
             editTextChangePwdNew.setError("Please enter a password, different from the current one.");
             editTextChangePwdNew.requestFocus();
 
@@ -162,7 +162,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(ChangePasswordActivity.this,"Password changed",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ChangePasswordActivity.this,"Password changed successfully",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(ChangePasswordActivity.this, UserPageActivity.class);
                         startActivity(intent);
                         finish();

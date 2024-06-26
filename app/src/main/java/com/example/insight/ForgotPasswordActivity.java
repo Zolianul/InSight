@@ -22,8 +22,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import java.util.Objects;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
-private Button buttonPwdReset;
-private EditText editTextPwdResetEmail;
+private Button buttonResetPassword;
+private EditText editTextResetPasswordEmail;
 private ProgressBar progressBar;
 private FirebaseAuth authProfile;
 private final static String TAG ="ForgotPasswordActivity";
@@ -36,23 +36,23 @@ private final static String TAG ="ForgotPasswordActivity";
         progressBar=findViewById(R.id.progressBar);
 
 
-        editTextPwdResetEmail=findViewById(R.id.edit_text_password_reset_usr_email);
-        buttonPwdReset=findViewById(R.id.button_password_reset);
+        editTextResetPasswordEmail =findViewById(R.id.edit_text_password_reset_usr_email);
+        buttonResetPassword =findViewById(R.id.button_password_reset);
 
 
-        buttonPwdReset.setOnClickListener(new View.OnClickListener() {
+        buttonResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = editTextPwdResetEmail.getText().toString();
+                String email = editTextResetPasswordEmail.getText().toString();
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(ForgotPasswordActivity.this, "Please enter your email",Toast.LENGTH_LONG).show();
-                    editTextPwdResetEmail.setError("Email is required");
-                    editTextPwdResetEmail.requestFocus();
+                    editTextResetPasswordEmail.setError("Please enter your email");
+                    editTextResetPasswordEmail.requestFocus();
                 }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     Toast.makeText(ForgotPasswordActivity.this, "Please enter a valid email",Toast.LENGTH_LONG).show();
-                    editTextPwdResetEmail.setError("Valid email is required");
-                    editTextPwdResetEmail.requestFocus();
+                    editTextResetPasswordEmail.setError("Please enter a valid email");
+                    editTextResetPasswordEmail.requestFocus();
                 }else{
                     progressBar.setVisibility(View.VISIBLE);
                     resetPwd(email);
@@ -77,8 +77,8 @@ private final static String TAG ="ForgotPasswordActivity";
                     try{
                         throw task.getException();
                     }catch (FirebaseAuthInvalidUserException e){
-                        editTextPwdResetEmail.setError("User does not exist");
-                        editTextPwdResetEmail.requestFocus();
+                        editTextResetPasswordEmail.setError("User does not exist");
+                        editTextResetPasswordEmail.requestFocus();
                     }catch (Exception e){
                         Log.e(TAG,e.getMessage());
                         Toast.makeText(ForgotPasswordActivity.this, e.getMessage(),Toast.LENGTH_LONG).show();
